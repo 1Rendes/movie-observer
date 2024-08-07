@@ -1,0 +1,14 @@
+.actors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 0 auto;
+}
+.actor {
+  flex-basis: calc((100% - 60px) / 5);
+  overflow: hidden;
+  text-align: center;
+}
+.img {
+  height: 100%;
+}

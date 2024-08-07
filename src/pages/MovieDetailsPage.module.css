@@ -1,0 +1,21 @@
+.list {
+  display: flex;
+  list-style: none;
+  gap: 30px;
+  margin-bottom: 16px;
+  text-decoration: underline;
+}
+.content {
+  display: flex;
+  gap: 10px;
+}
+.add {
+  border-top: 2px solid white;
+}
+img {
+  height: 100%;
+  max-height: 300px;
+}
+li.actors {
+  list-style: none;
+}
