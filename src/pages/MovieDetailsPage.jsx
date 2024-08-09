@@ -7,14 +7,18 @@ import toast, { Toaster } from "react-hot-toast";
 import placeholder from "../img/placeholder-image.webp";
 import homeCss from "./HomePage.module.css";
 import css from "./MovieDetailsPage.module.css";
+import { useSelect } from "../hooks/useSelect";
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
 const MovieDetailsPage = () => {
-  const { id } = useParams();
-  const endpoint = `/movie/${id}`;
+  const { type, id } = useParams();
+  const query = "";
+  const endpoint = useSelect(type, query, id);
+  console.log(endpoint);
+
   const { data, error } = useFetch(endpoint);
   const location = useLocation();
-  const backLinkValue = location.state ?? "/movies";
+  const backLinkValue = location.state ?? "/";
   const [backLink] = useState(backLinkValue);
 
   error && toast.error(error);

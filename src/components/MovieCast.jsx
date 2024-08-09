@@ -3,10 +3,12 @@ import { useFetch } from "../hooks/useFetch";
 import placeholder from "../img/placeholder-actor.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./MovieCast.module.css";
+import { useSelect } from "../hooks/useSelect";
 
 const MovieCast = () => {
-  const { id } = useParams();
-  const endpoint = `/movie/${id}/casts`;
+  const { type, id } = useParams();
+  const subFetch = type === "movie" ? "casts" : "credits";
+  const endpoint = useSelect(type, "", id, subFetch);
   const { data, error } = useFetch(endpoint);
   error && toast.error(error);
 
@@ -17,7 +19,8 @@ const MovieCast = () => {
         <ul className={css.actors}>
           {data.cast.map(({ id, profile_path, name, character }) => (
             <li className={css.actor} key={id}>
-              <img className={css.img}
+              <img
+                className={css.img}
                 src={
                   profile_path
                     ? `https://image.tmdb.org/t/p/w500/${profile_path}`

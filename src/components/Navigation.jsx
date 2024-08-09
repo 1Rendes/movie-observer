@@ -1,6 +1,7 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useSearchParams } from "react-router-dom";
 import css from "./Navigation.module.css";
 import clsx from "clsx";
+import { Form } from "./Form";
 
 const Navigation = () => {
   const buildLinkClass = ({ isActive }) => {
@@ -9,15 +10,13 @@ const Navigation = () => {
 
   return (
     <div className={css.navigation}>
-      <header>
+      <header className={css.header}>
         <nav className={css.buttons}>
           <NavLink to="/" className={buildLinkClass}>
             Home
           </NavLink>
-          <NavLink to="/movies" className={buildLinkClass}>
-            Movies
-          </NavLink>
         </nav>
+        <Form />
       </header>
     </div>
   );

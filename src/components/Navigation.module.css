@@ -4,12 +4,6 @@
   margin-bottom: 10px;
   box-shadow: 0px 0px 10px orange, 0px 0px 10px orange, 0px 0px 10px orange;
 }
-.buttons {
-  display: flex;
-  margin: 0 auto;
-  gap: 10px;
-  max-width: 1280px;
-}
 .element {
   color: white;
   transition: color 50ms ease-in-out, text-shadow 50ms ease-in-out;
@@ -20,4 +14,11 @@
 .element:hover {
   text-shadow: 0px 0px 5px white, 0px 0px 5px white, 0px 0px 5px white;
   color: white;
+}
+.header {
+  gap: 10px;
+  max-width: 1280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -2,10 +2,11 @@ import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./MovieRewiews.module.css";
+import { useSelect } from "../hooks/useSelect";
 
 const MovieReviews = () => {
-  const { id } = useParams();
-  const endpoint = `/movie/${id}/reviews`;
+  const { type, id } = useParams();
+  const endpoint = useSelect(type, "", id, "reviews");
   const { data, error } = useFetch(endpoint);
   error && toast.error(error);
 
