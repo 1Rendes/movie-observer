@@ -1,11 +1,8 @@
-import MovieList from "../components/MovieList";
-// import { useFetch } from "../hooks/useFetch";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./HomePage.module.css";
-// import { useLocation, useSearchParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-// import { useSelect } from "../hooks/useSelect";
+import { useEffect } from "react";
 import { useDefaultFetch } from "../hooks/useDefaultFetch";
+import HomeMovieList from "../components/HomeMovieList";
 
 const HomePage = () => {
   const { homePageData, error } = useDefaultFetch();
@@ -19,21 +16,21 @@ const HomePage = () => {
   return (
     <div className={css.homePage}>
       <Toaster />
-      Top rated movies:
+      <h3>Top rated movies:</h3>
       {homePageData[0] && (
-        <MovieList movieList={homePageData[0].results} type={"movie"} />
+        <HomeMovieList movieList={homePageData[0].results} type={"movie"} />
       )}
-      Upcoming movies:
-      {homePageData[0] && (
-        <MovieList movieList={homePageData[1].results} type={"movie"} />
+      <h3>Upcoming movies:</h3>
+      {homePageData[1] && (
+        <HomeMovieList movieList={homePageData[1].results} type={"movie"} />
       )}
-      Trendings series today:
-      {homePageData[0] && (
-        <MovieList movieList={homePageData[2].results} type={"tv"} />
+      <h3>Trendings series today:</h3>
+      {homePageData[2] && (
+        <HomeMovieList movieList={homePageData[2].results} type={"tv"} />
       )}
-      Top rated series:
-      {homePageData[0] && (
-        <MovieList movieList={homePageData[3].results} type={"tv"} />
+      <h3>Top rated series:</h3>
+      {homePageData[3] && (
+        <HomeMovieList movieList={homePageData[3].results} type={"tv"} />
       )}
     </div>
   );

@@ -1,0 +1,35 @@
+.swiperWraper .swiperSlide {
+  height: 200px;
+}
+.swiperWraper {
+  padding: 0 40px;
+}
+.swiperWraper .swiperButtonNext,
+.swiperWraper .swiperButtonPrev {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 50px;
+  right: 5px;
+  z-index: 2;
+  border: 2px solid grey;
+  border-radius: 50%;
+  transition: background-color 100ms ease-in-out, fill 100ms ease-in-out;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.swiperWraper .swiperButtonPrev {
+  left: 5px;
+}
+.swiperWraper .swiperButtonNext:hover,
+.swiperWraper .swiperButtonPrev:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  fill: orange;
+}
+.swiperWraper .swiper-button-disabled {
+  fill: grey;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.swiperWraper .swiper-button-disabled:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+  fill: grey;
+}

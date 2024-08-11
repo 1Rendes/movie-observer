@@ -1,0 +1,7 @@
+.image {
+  width: 100%;
+  display: flex;
+}
+.div {
+  overflow: hidden;
+}
