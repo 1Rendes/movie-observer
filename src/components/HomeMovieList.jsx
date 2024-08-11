@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import "./HomeMovieList.css";
+import "./swiperStyles.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";

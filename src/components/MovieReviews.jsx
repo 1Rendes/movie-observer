@@ -1,13 +1,13 @@
 import { useParams } from "react-router-dom";
-import { useFetch } from "../hooks/useFetch";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./MovieRewiews.module.css";
 import { useSelect } from "../hooks/useSelect";
+import { useSubfetch } from "../hooks/useSubfetch";
 
 const MovieReviews = () => {
   const { type, id } = useParams();
   const endpoint = useSelect(type, "", id, "reviews");
-  const { data, error } = useFetch(endpoint);
+  const { data, error } = useSubfetch(endpoint);
   error && toast.error(error);
 
   return (

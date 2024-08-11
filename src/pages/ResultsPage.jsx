@@ -10,12 +10,10 @@ const ResultsPage = () => {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("query"));
   const [type, setType] = useState(searchParams.get("type"));
-  const endpoint = useSelect(type, query);
-  const { data, error } = useFetch(endpoint, query);
+  const endpoints = useSelect(type, query);
+  const { data, error } = useFetch(endpoints, query);
   const location = useLocation();
-
   error && toast.error(error);
-
   useEffect(() => {
     if (location.search) {
       setQuery(searchParams.get("query"));
@@ -24,12 +22,28 @@ const ResultsPage = () => {
       setQuery("");
       setType("");
     }
-  }, [location]);
+  }, [data, location, searchParams]);
 
   return (
     <div className={css.homePage}>
       <Toaster />
-      {data.results && <MovieList movieList={data.results} type={type} />}
+      {type === "movie" || type === "all" ? <h3>Movies:</h3> : <h3>Series:</h3>}
+      {data.length > 0 && (
+        <MovieList movieList={data[0].results} type={"movie"} />
+      )}
+      {data.length > 0 && data[0].results.length === 0 && (
+        <p>We didn&apos;t find any movies with this request</p>
+      )}
+
+      {data.length > 1 && (
+        <>
+          <h3>Series:</h3>
+          <MovieList movieList={data[1].results} type={"tv"} />
+        </>
+      )}
+      {data.length > 0 && data[1].results.length === 0 && (
+        <p>We didn&apos;t find any series with this request</p>
+      )}
     </div>
   );
 };

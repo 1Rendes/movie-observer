@@ -12,7 +12,6 @@ const MovieDetailsPage = () => {
   const { type, id } = useParams();
   const query = "";
   const endpoint = useSelect(type, query, id);
-  console.log(endpoint);
   const { data, error } = useFetch(endpoint);
   const location = useLocation();
   const backLinkValue = location.state ?? "/";
@@ -27,29 +26,38 @@ const MovieDetailsPage = () => {
         <BackLinkButton to={backLink} />
         <img
           src={
-            data.backdrop_path
-              ? `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
+            data.length > 0
+              ? `https://image.tmdb.org/t/p/w500/${data[0].backdrop_path}`
               : placeholder
           }
           alt=""
         />
-        <div className={css.textContent}>
-          <h2>{data.title}</h2>
-          <p>
-            <b>User score: </b> {`${Math.ceil(data.vote_average * 10)}%`}
-          </p>
-          <p>
-            {type === "movie" ? <b>Release date: </b> : <b>First air date: </b>}
-            {data.release_date && data.release_date.split("-").join(".")}
-            {data.first_air_date && data.first_air_date.split("-").join(".")}
-          </p>
-          <h3>Overview: </h3>
-          <p>{data.overview}</p>
-          <h3>Genres: </h3>
-          {data.genres && (
-            <p>{data.genres.map((genre) => genre.name).join(", ")}</p>
-          )}
-        </div>
+        {data.length > 0 && (
+          <div className={css.textContent}>
+            <h2>{data[0].title}</h2>
+            <h2>{data[0].name}</h2>
+            <p>
+              <b>User score: </b> {`${Math.ceil(data[0].vote_average * 10)}%`}
+            </p>
+            <p>
+              {type === "movie" ? (
+                <b>Release date: </b>
+              ) : (
+                <b>First air date: </b>
+              )}
+              {data[0].release_date &&
+                data[0].release_date.split("-").join(".")}
+              {data[0].first_air_date &&
+                data[0].first_air_date.split("-").join(".")}
+            </p>
+            <h3>Overview: </h3>
+            <p>{data[0].overview}</p>
+            <h3>Genres: </h3>
+            {data[0].genres && (
+              <p>{data[0].genres.map((genre) => genre.name).join(", ")}</p>
+            )}
+          </div>
+        )}{" "}
       </div>
       <h3 className={css.add}>Additional information:</h3>
       <ul className={css.list}>

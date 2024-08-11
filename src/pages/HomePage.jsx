@@ -1,15 +1,10 @@
 import toast, { Toaster } from "react-hot-toast";
 import css from "./HomePage.module.css";
-import { useEffect } from "react";
 import { useDefaultFetch } from "../hooks/useDefaultFetch";
 import HomeMovieList from "../components/HomeMovieList";
 
 const HomePage = () => {
   const { homePageData, error } = useDefaultFetch();
-
-  useEffect(() => {
-    console.log(homePageData[0]);
-  }, [homePageData]);
 
   error && toast.error(error);
 

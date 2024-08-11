@@ -13,9 +13,6 @@ export const Form = () => {
     if (!query) {
       toast.error("Please fill the request");
       return;
-    } else if (!type) {
-      toast.error('Choose "Movie" or "Series"');
-      return;
     } else {
       navigate(`/results/?query=${query}&type=${type}`);
     }
@@ -26,6 +23,7 @@ export const Form = () => {
       <input type="text" name="query" className={css.input} />
       <input type="radio" name="type" value="movie" />
       <input type="radio" name="type" value="tv" />
+      <input type="radio" name="type" value="all" defaultChecked />
       <button type="submit" className={css.button}>
         Go!
       </button>

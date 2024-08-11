@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
-import { useFetch } from "../hooks/useFetch";
 import placeholder from "../img/placeholder-actor.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./MovieCast.module.css";
 import { useSelect } from "../hooks/useSelect";
+import { useSubfetch } from "../hooks/useSubfetch";
 
 const MovieCast = () => {
   const { type, id } = useParams();
   const subFetch = type === "movie" ? "casts" : "credits";
   const endpoint = useSelect(type, "", id, subFetch);
-  const { data, error } = useFetch(endpoint);
+  const { data, error } = useSubfetch(endpoint);
   error && toast.error(error);
 
   return (
