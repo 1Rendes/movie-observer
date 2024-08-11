@@ -23,6 +23,7 @@ const ResultsPage = () => {
       setType("");
     }
   }, [data, location, searchParams]);
+  data.length > 0 && console.log(data);
 
   return (
     <div className={css.homePage}>
@@ -41,7 +42,7 @@ const ResultsPage = () => {
           <MovieList movieList={data[1].results} type={"tv"} />
         </>
       )}
-      {data.length > 0 && data[1].results.length === 0 && (
+      {data.length > 1 && data[1].results.length === 0 && (
         <p>We didn&apos;t find any series with this request</p>
       )}
     </div>
