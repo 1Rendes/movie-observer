@@ -23,15 +23,12 @@ const ResultsPage = () => {
       setType("");
     }
   }, [data, location, searchParams]);
-  data.length > 0 && console.log(data);
 
   return (
     <div className={css.homePage}>
       <Toaster />
       {type === "movie" || type === "all" ? <h3>Movies:</h3> : <h3>Series:</h3>}
-      {data.length > 0 && (
-        <MovieList movieList={data[0].results} type={"movie"} />
-      )}
+      {data.length > 0 && <MovieList movieList={data[0].results} type={type} />}
       {data.length > 0 && data[0].results.length === 0 && (
         <p>We didn&apos;t find any movies with this request</p>
       )}

@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 export const useFetch = (endpoints, query) => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [error, setError] = useState(null);
   axios.defaults.baseURL = "https://api.themoviedb.org/3";
 
