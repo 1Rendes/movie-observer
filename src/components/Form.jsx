@@ -1,8 +1,10 @@
 import css from "./Form.module.css";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { FaSearch } from "react-icons/fa";
+import clsx from "clsx";
 
-export const Form = () => {
+export const Form = ({ mobMenu }) => {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -17,16 +19,22 @@ export const Form = () => {
       navigate(`/results/?query=${query}&type=${type}`);
     }
   };
-
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <input type="text" name="query" className={css.input} />
-      <input type="radio" name="type" value="movie" />
-      <input type="radio" name="type" value="tv" />
-      <input type="radio" name="type" value="all" defaultChecked />
-      <button type="submit" className={css.button}>
-        Go!
-      </button>
-    </form>
+    <>
+      <form
+        className={clsx(css.form, mobMenu && css.isMobMenu)}
+        onSubmit={handleSubmit}
+      >
+        <select className={css.select} name="type">
+          <option value="all">All</option>
+          <option value="movie">Movies</option>
+          <option value="tv">Series</option>
+        </select>
+        <input type="text" name="query" className={css.input} />
+        <button type="submit" className={css.button}>
+          <FaSearch className={css.FaSearch} />
+        </button>
+      </form>
+    </>
   );
 };

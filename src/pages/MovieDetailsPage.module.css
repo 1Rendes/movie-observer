@@ -7,14 +7,22 @@
 }
 .content {
   display: flex;
+  flex-direction: column;
   gap: 10px;
+}
+@media (min-width: 1280px) {
+  .content {
+    flex-direction: row;
+    gap: 10px;
+  }
 }
 .add {
   border-top: 2px solid white;
 }
-img {
-  height: 100%;
-  max-height: 300px;
+@media (min-width: 1280px) {
+  img {
+    max-height: 300px;
+  }
 }
 li.actors {
   list-style: none;
