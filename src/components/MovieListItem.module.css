@@ -3,5 +3,6 @@
   display: flex;
 }
 .div {
+  display: flex;
   overflow: hidden;
 }

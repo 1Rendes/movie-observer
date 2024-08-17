@@ -1,9 +1,9 @@
-import css from "./MovieListItem.module.css";
 import placeholder from "../img/placeholder-image.webp";
+import css from "./MovieListItem.module.css";
 
 export const MovieListItem = ({ result }) => {
   return (
-    <div className={css.div}>
+    <>
       <img
         className={css.image}
         src={
@@ -11,9 +11,10 @@ export const MovieListItem = ({ result }) => {
             ? `https://image.tmdb.org/t/p/w500/${result.backdrop_path}`
             : placeholder
         }
+        alt=""
       />
-      {result.title && <p>{result.title}</p>}
-      {result.name && <p>{result.name}</p>}
-    </div>
+      <p>{result.title}</p>
+      <p>{result.name}</p>
+    </>
   );
 };

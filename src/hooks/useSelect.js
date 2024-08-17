@@ -4,9 +4,9 @@ export const useSelect = (type, query, id, subFetch) => {
   const endpoint = useMemo(() => {
     if (query) {
       const searchEndpoints = {
-        movie: ["/search/movie"],
-        tv: ["/search/tv"],
-        all: ["/search/movie", "/search/tv"],
+        movie: "/search/movie",
+        tv: "/search/tv",
+        all: "/search/multi",
       };
       return searchEndpoints[type];
     }
@@ -22,7 +22,7 @@ export const useSelect = (type, query, id, subFetch) => {
         movie: `/movie/${id}`,
         tv: `/tv/${id}`,
       };
-      return [idEndpoints[type]] || [];
+      return idEndpoints[type] || "";
     }
     return "";
   }, [id, query, subFetch, type]);

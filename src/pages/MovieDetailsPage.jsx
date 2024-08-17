@@ -26,18 +26,18 @@ const MovieDetailsPage = () => {
         <BackLinkButton to={backLink} />
         <img
           src={
-            data.length > 0
-              ? `https://image.tmdb.org/t/p/w500/${data[0].backdrop_path}`
+            data
+              ? `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
               : placeholder
           }
           alt=""
         />
-        {data.length > 0 && (
+        {data && (
           <div className={css.textContent}>
-            <h2>{data[0].title}</h2>
-            <h2>{data[0].name}</h2>
+            <h2>{data.title}</h2>
+            <h2>{data.name}</h2>
             <p>
-              <b>User score: </b> {`${Math.ceil(data[0].vote_average * 10)}%`}
+              <b>User score: </b> {`${Math.ceil(data.vote_average * 10)}%`}
             </p>
             <p>
               {type === "movie" ? (
@@ -45,16 +45,14 @@ const MovieDetailsPage = () => {
               ) : (
                 <b>First air date: </b>
               )}
-              {data[0].release_date &&
-                data[0].release_date.split("-").join(".")}
-              {data[0].first_air_date &&
-                data[0].first_air_date.split("-").join(".")}
+              {data.release_date && data.release_date.split("-").join(".")}
+              {data.first_air_date && data.first_air_date.split("-").join(".")}
             </p>
             <h3>Overview: </h3>
-            <p>{data[0].overview}</p>
+            <p>{data.overview}</p>
             <h3>Genres: </h3>
-            {data[0].genres && (
-              <p>{data[0].genres.map((genre) => genre.name).join(", ")}</p>
+            {data.genres && (
+              <p>{data.genres.map((genre) => genre.name).join(", ")}</p>
             )}
           </div>
         )}{" "}

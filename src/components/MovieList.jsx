@@ -1,7 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import css from "./MovieList.module.css";
+import { MovieListItem } from "./MovieListItem";
 
-const MovieList = ({ movieList, type }) => {
+const MovieLis = ({ movieList, type }) => {
   const location = useLocation();
   if (type === "all") type = "movie";
 
@@ -9,10 +10,9 @@ const MovieList = ({ movieList, type }) => {
     <ul className={css.list}>
       {movieList.map((result) => {
         return (
-          <div key={result.id}>
+          <div key={result.id} className={css.MovieListCard}>
             <Link to={`/${type}/${result.id}`} state={location}>
-              {result.title && <li>{result.title}</li>}
-              {result.name && <li>{result.name}</li>}
+              <MovieListItem result={result} />
             </Link>
           </div>
         );
@@ -21,4 +21,4 @@ const MovieList = ({ movieList, type }) => {
   );
 };
 
-export default MovieList;
+export default MovieLis;

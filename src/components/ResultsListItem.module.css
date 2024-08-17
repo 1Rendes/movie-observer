@@ -1,0 +1,16 @@
+.image {
+  width: 100px;
+  display: flex;
+}
+.div {
+  display: flex;
+  overflow: hidden;
+  gap: 10px;
+}
+.data {
+  display: flex;
+  flex-direction: column;
+}
+.par {
+  margin: 0;
+}

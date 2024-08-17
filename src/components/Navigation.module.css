@@ -14,10 +14,17 @@
   transition: opacity 100ms ease-in-out;
 }
 .isMobMenu {
+  display: flex;
   opacity: 0;
   pointer-events: none;
   width: 0;
-  display: flex;
+}
+@media (min-width: 768px) {
+  .isMobMenu {
+    opacity: 1;
+    pointer-events: auto;
+    width: auto;
+  }
 }
 .FaSearch {
   width: 18px;
