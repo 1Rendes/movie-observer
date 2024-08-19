@@ -1,10 +1,9 @@
 import { HiArrowLeft } from "react-icons/hi";
 import { Link } from "react-router-dom";
-// import css from "./BackLinkButton.module.css";
 
 const BackLinkButton = ({ to, children }) => {
   return (
-    <Link to={to} state={to}>
+    <Link to={to}>
       <HiArrowLeft size="24" />
       {children}
     </Link>

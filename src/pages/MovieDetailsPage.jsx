@@ -1,5 +1,5 @@
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { useFetch } from "../hooks/useFetch";
 import BackLinkButton from "../components/BackLinkButton";
 import toast, { Toaster } from "react-hot-toast";
@@ -14,25 +14,18 @@ const MovieDetailsPage = () => {
   const endpoint = useSelect(type, query, id);
   const { data, error } = useFetch(endpoint);
   const location = useLocation();
+  const backLinkRef = useRef(location.state ?? "");
 
-  function findPathname(state) {
-    let currentState = state;
-    while (currentState && currentState.state) {
-      currentState = currentState.state;
-    }
-    return currentState ? currentState : "/";
-  }
-  const backLinkValue = findPathname(location);
-  const [backLink] = useState(backLinkValue);
-  console.log(backLink);
-
-  error && toast.error(error);
+  useEffect(() => {
+    if (!error) return;
+    toast.error(error);
+  }, [error]);
 
   return (
     <main className={homeCss.homePage}>
       <Toaster />
       <div className={css.content}>
-        <BackLinkButton to={backLink} />
+        <BackLinkButton to={backLinkRef.current} />
         <img
           className={css.img}
           src={
@@ -73,15 +66,19 @@ const MovieDetailsPage = () => {
       <h3 className={css.add}>Additional information:</h3>
       <ul className={css.list}>
         <li>
-          <Link to="cast" state={location}>
+          <Link to="cast" state={backLinkRef.current}>
             {type === "movie" ? "Cast" : "Credits"}
           </Link>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <Link to="reviews" state={backLinkRef.current}>
+            Reviews
+          </Link>
         </li>
         <li>
-          <Link to="videos">Videos</Link>
+          <Link to="videos" state={backLinkRef.current}>
+            Videos
+          </Link>
         </li>
       </ul>
 

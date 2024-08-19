@@ -1,0 +1,32 @@
+.img {
+  height: 100%;
+  border-radius: 10px;
+}
+@media (min-width: 768px) {
+  .img {
+    height: 400px;
+  }
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (min-width: 768px) {
+  .content {
+    flex-direction: row;
+    gap: 20px;
+  }
+}
+.homePage {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 15px;
+}
+.combined {
+  max-width: 500px;
+}
+.textContent {
+  display: flex;
+  flex-direction: column;
+}

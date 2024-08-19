@@ -17,6 +17,8 @@ export const useSelect = (type, query, id, subFetch) => {
           ? `/movie/${id}/${subFetch}`
           : type === "tv"
           ? `/tv/${id}/${subFetch}`
+          : type === "person"
+          ? `/person/${id}/${subFetch}`
           : "";
       }
       const idEndpoints = {

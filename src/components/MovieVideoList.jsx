@@ -3,6 +3,7 @@ import { useSelect } from "../hooks/useSelect";
 import { useFetch } from "../hooks/useFetch";
 import VideoPlayer from "./VideoPlayer";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 const MovieVideoList = () => {
   const { type, id } = useParams();
@@ -10,7 +11,10 @@ const MovieVideoList = () => {
   const { data, error } = useFetch(endpoint);
   console.log(data);
 
-  error && toast.error(error);
+  useEffect(() => {
+    if (!error) return;
+    toast.error(error);
+  }, [error]);
 
   return (
     <>

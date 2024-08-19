@@ -32,7 +32,7 @@ const HomeMovieList = ({ movieList, type }) => {
     >
       {movieList.map((result) => {
         return (
-          <SwiperSlide className="swiperSlide" key={result.id}>
+          <SwiperSlide className="swiper-slide" key={result.id}>
             <Link to={`/${type}/${result.id}`} state={location}>
               <MovieListItem result={result} />
             </Link>

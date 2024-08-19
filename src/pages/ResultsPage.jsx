@@ -15,7 +15,10 @@ const ResultsPage = () => {
   const { data, error } = useFetch(endpoint, query, page);
   const location = useLocation();
 
-  error && toast.error(error);
+  useEffect(() => {
+    if (!error) return;
+    toast.error(error);
+  }, [error]);
 
   useEffect(() => {
     if (location.search) {

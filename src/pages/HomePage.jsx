@@ -2,11 +2,15 @@ import toast, { Toaster } from "react-hot-toast";
 import css from "./HomePage.module.css";
 import { useDefaultFetch } from "../hooks/useDefaultFetch";
 import HomeMovieList from "../components/HomeMovieList";
+import { useEffect } from "react";
 
 const HomePage = () => {
   const { homePageData, error } = useDefaultFetch();
 
-  error && toast.error(error);
+  useEffect(() => {
+    if (!error) return;
+    toast.error(error);
+  }, [error]);
 
   return (
     <div className={css.homePage}>
