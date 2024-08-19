@@ -35,13 +35,10 @@ const PersonCombined = () => {
             nextEl: ".swiperButtonNext",
           }}
           className="swiperWraper"
-          slidesPerView={1}
+          slidesPerView={2}
+          spaceBetween={15}
           breakpoints={{
             768: {
-              slidesPerView: 3,
-              spaceBetween: 15,
-            },
-            1280: {
               slidesPerView: 6,
               spaceBetween: 15,
             },

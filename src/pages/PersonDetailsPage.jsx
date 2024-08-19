@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useSelect } from "../hooks/useSelect";
 import { useFetch } from "../hooks/useFetch";
 import { useEffect } from "react";
@@ -36,25 +36,25 @@ const PersonDetailsPage = () => {
           />
           <div className={css.textContent}>
             <h2>{data.name}</h2>
-            <p>
+            <p className={css.descr}>
               <b>Knows for department:</b> {data.known_for_department}
             </p>
-            <p>
-              <b>Birthday:</b> {data.birthday.split("-").join(".")}
-            </p>
-            <p>
-              <b>Place of birth:</b> {data.place_of_birth}
-            </p>
-            <p>
-              <b>Biography: </b>
-              {data.biography}
-            </p>
-            <p>
+            <p className={css.descr}>
               <b>Gender: </b>
               {data.gender === 2 ? "Male" : "Female"}
             </p>
+            <p className={css.descr}>
+              <b>Birthday:</b> {data.birthday.split("-").join(".")}
+            </p>
+            <p className={css.descr}>
+              <b>Place of birth:</b> {data.place_of_birth}
+            </p>
+            <p className={css.descr}>
+              <b>Biography: </b>
+              {data.biography}
+            </p>
             {data.deathday && (
-              <p>
+              <p className={css.descr}>
                 <b>Deathday: </b>
                 {data.deathday.split("-").join(".")}
               </p>
@@ -62,6 +62,7 @@ const PersonDetailsPage = () => {
           </div>
         </div>
       )}
+      <h2>Known by:</h2>
       <PersonCombined className={css.combined} />
     </div>
   );
