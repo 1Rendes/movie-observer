@@ -7,6 +7,8 @@ import BackLinkButton from "../components/BackLinkButton";
 import placeholder from "../img/placeholder-actor.jpg";
 import css from "./PersonDetailsPage.module.css";
 import PersonCombined from "../components/PersonCombined";
+import ReactShowMoreText from "react-show-more-text";
+import "./showMore.css";
 
 const PersonDetailsPage = () => {
   const { id } = useParams();
@@ -35,7 +37,7 @@ const PersonDetailsPage = () => {
             alt=""
           />
           <div className={css.textContent}>
-            <h2>{data.name}</h2>
+            <h2 className={css.name}>{data.name}</h2>
             <p className={css.descr}>
               <b>Knows for department:</b> {data.known_for_department}
             </p>
@@ -51,7 +53,17 @@ const PersonDetailsPage = () => {
             </p>
             <p className={css.descr}>
               <b>Biography: </b>
-              {data.biography}
+              <ReactShowMoreText
+                lines={6}
+                more="Show more"
+                less="Show less"
+                className="content-css"
+                anchorClass="show-more-less-clickable"
+                expanded={false}
+                truncatedEndingComponent={"... "}
+              >
+                {data.biography}
+              </ReactShowMoreText>
             </p>
             {data.deathday && (
               <p className={css.descr}>
@@ -62,7 +74,7 @@ const PersonDetailsPage = () => {
           </div>
         </div>
       )}
-      <h2>Known by:</h2>
+      <h3 className={css.known}>Known by:</h3>
       <PersonCombined className={css.combined} />
     </div>
   );

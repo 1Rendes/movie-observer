@@ -46,7 +46,7 @@ const PersonCombined = () => {
         >
           {data.cast.map((result) => {
             return (
-              <SwiperSlide className="swiper-slide" key={result.id}>
+              <SwiperSlide className="swiper-slide" key={result.credit_id}>
                 <Link to={`/${result.media_type}/${result.id}`}>
                   <MovieListItem result={result} />
                 </Link>

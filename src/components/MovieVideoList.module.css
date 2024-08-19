@@ -1,0 +1,22 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.listItem {
+  flex-basis: 100%;
+  list-style: none;
+}
+@media (min-width: 768px) {
+  .listItem {
+    flex-basis: calc((100% - 30px) / 3);
+  }
+}
+@media (min-width: 1280px) {
+  .listItem {
+    flex-basis: calc((100% - 45px) / 4);
+  }
+}
+.noContent {
+  margin: 0;
+}

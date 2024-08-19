@@ -33,8 +33,10 @@ const MovieCast = () => {
                 }
                 alt=""
               />
-              <p>{name}</p>
-              <p>Character: {character}</p>
+              <div className={css.textContent}>
+                <p className={css.descr}>{name}</p>
+                <p className={css.descr}>Character: {character}</p>
+              </div>
             </Link>
           ))}
         </ul>

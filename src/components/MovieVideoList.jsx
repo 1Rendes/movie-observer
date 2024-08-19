@@ -4,6 +4,7 @@ import { useFetch } from "../hooks/useFetch";
 import VideoPlayer from "./VideoPlayer";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
+import css from "./MovieVideoList.module.css";
 
 const MovieVideoList = () => {
   const { type, id } = useParams();
@@ -19,15 +20,18 @@ const MovieVideoList = () => {
   return (
     <>
       {data && (
-        <ul>
+        <ul className={css.list}>
           {data.results.map(({ id, name, key }) => (
-            <li key={id}>
+            <li key={id} className={css.listItem}>
               <VideoPlayer
                 video={`https://www.youtube.com/embed/${key}`}
                 name={name}
               />
             </li>
           ))}
+          {data.results.length === 0 && (
+            <p className={css.noContent}>We do not have any videos</p>
+          )}
         </ul>
       )}
     </>

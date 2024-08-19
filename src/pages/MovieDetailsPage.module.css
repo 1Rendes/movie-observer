@@ -9,15 +9,15 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border-bottom: 2px solid white;
+  padding-bottom: 15px;
+  box-shadow: 0px 24px 20px -23px rgba(0, 0, 0, 0.75);
 }
 @media (min-width: 768px) {
   .content {
     flex-direction: row;
     gap: 10px;
   }
-}
-.add {
-  border-top: 2px solid white;
 }
 .img {
   height: 100%;

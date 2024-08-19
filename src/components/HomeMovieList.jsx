@@ -18,10 +18,11 @@ const HomeMovieList = ({ movieList, type }) => {
         nextEl: ".swiperButtonNext",
       }}
       className="swiperWraper"
-      slidesPerView={1}
+      slidesPerView={2}
+      spaceBetween={15}
       breakpoints={{
         768: {
-          slidesPerView: 3,
+          slidesPerView: 4,
           spaceBetween: 15,
         },
         1280: {

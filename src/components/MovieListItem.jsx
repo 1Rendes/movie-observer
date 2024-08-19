@@ -3,7 +3,7 @@ import css from "./MovieListItem.module.css";
 
 export const MovieListItem = ({ result }) => {
   return (
-    <>
+    <div className={css.card}>
       <img
         className={css.image}
         src={
@@ -13,8 +13,10 @@ export const MovieListItem = ({ result }) => {
         }
         alt=""
       />
-      <p>{result.title}</p>
-      <p>{result.name}</p>
-    </>
+      <div className={css.textContent}>
+        {result.title && <p className={css.name}>{result.title}</p>}
+        {result.name && <p className={css.name}>{result.name}</p>}
+      </div>
+    </div>
   );
 };

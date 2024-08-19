@@ -1,7 +1,7 @@
 .swiperWraper .swiper-slide {
 }
-.swiperWraper {
-  padding: 0 40px;
+#root .swiperWraper {
+  padding: 15px 30px;
 }
 .swiperWraper .swiperButtonNext,
 .swiperWraper .swiperButtonPrev {
