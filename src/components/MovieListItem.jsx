@@ -8,7 +8,7 @@ export const MovieListItem = ({ result }) => {
         className={css.image}
         src={
           result.backdrop_path
-            ? `https://image.tmdb.org/t/p/w500/${result.backdrop_path}`
+            ? `https://image.tmdb.org/t/p/w500/${result.poster_path}`
             : placeholder
         }
         alt=""

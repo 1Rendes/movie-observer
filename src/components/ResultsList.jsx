@@ -12,7 +12,7 @@ const ResultsList = ({ movieList, type }) => {
           return (
             <div key={result.id} className={css.MovieListCard}>
               <Link to={`/${type}/${result.id}`} state={location}>
-                <ResultsListItem result={result} />
+                <ResultsListItem result={result} type={type} />
               </Link>
             </div>
           );

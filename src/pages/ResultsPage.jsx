@@ -10,9 +10,8 @@ const ResultsPage = () => {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("query"));
   const [type, setType] = useState(searchParams.get("type"));
-  const [page, setPage] = useState(1);
+  const [page] = useState(1);
   const endpoint = useSelect(type, query);
-  console.log(query);
   const { data, error } = useFetch(endpoint, query, page);
   const location = useLocation();
 
@@ -33,25 +32,11 @@ const ResultsPage = () => {
       <Toaster />
       <h3>Results:</h3>
       {data && <ResultsList movieList={data.results} type={type} />}
+      {data?.results?.length === 0 && (
+        <p>We didn&apos;t find any data for Your request</p>
+      )}
     </div>
   );
 };
 
 export default ResultsPage;
-
-/* {type === "movie" || type === "all" ? <h3>Movies:</h3> : <h3>Series:</h3>}
-      {data.length > 0 && (
-        <ResultsList movieList={data[0].results} type={type} />
-      )}
-      {data.length > 0 && data[0].results.length === 0 && (
-        <p>We didn&apos;t find any movies with this request</p>
-      )}
-
-      {data.length > 1 && (
-        <>
-          <ResultsList movieList={data[1].results} type={"tv"} />
-        </>
-      )}
-      {data.length > 1 && data[1].results.length === 0 && (
-        <p>We didn&apos;t find any series with this request</p>
-      )} */

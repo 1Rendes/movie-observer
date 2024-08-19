@@ -10,7 +10,7 @@
   flex-direction: column;
   gap: 10px;
 }
-@media (min-width: 1280px) {
+@media (min-width: 768px) {
   .content {
     flex-direction: row;
     gap: 10px;
@@ -19,9 +19,13 @@
 .add {
   border-top: 2px solid white;
 }
-@media (min-width: 1280px) {
-  img {
-    max-height: 300px;
+.img {
+  height: 100%;
+  border-radius: 10px;
+}
+@media (min-width: 768px) {
+  .img {
+    height: 400px;
   }
 }
 li.actors {

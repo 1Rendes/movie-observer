@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const BackLinkButton = ({ to, children }) => {
   return (
-    <Link to={to}>
+    <Link to={to} state={to}>
       <HiArrowLeft size="24" />
       {children}
     </Link>

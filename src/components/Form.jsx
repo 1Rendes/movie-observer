@@ -29,6 +29,7 @@ export const Form = ({ mobMenu }) => {
           <option value="all">All</option>
           <option value="movie">Movies</option>
           <option value="tv">Series</option>
+          <option value="person">Persons</option>
         </select>
         <input type="text" name="query" className={css.input} />
         <button type="submit" className={css.button}>

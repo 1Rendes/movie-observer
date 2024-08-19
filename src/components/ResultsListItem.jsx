@@ -1,14 +1,14 @@
 import css from "./ResultsListItem.module.css";
 import placeholder from "../img/placeholder-image.webp";
 
-export const ResultsListItem = ({ result }) => {
+export const ResultsListItem = ({ result, type }) => {
   return (
     <div className={css.div}>
       <img
         className={css.image}
         src={
           result.backdrop_path
-            ? `https://image.tmdb.org/t/p/w500/${result.backdrop_path}`
+            ? `https://image.tmdb.org/t/p/w500/${result.poster_path}`
             : placeholder
         }
       />
@@ -21,6 +21,7 @@ export const ResultsListItem = ({ result }) => {
         {result.first_air_date && (
           <p className={css.par}>{result.first_air_date}</p>
         )}
+        <p className={css.par}>{type}</p>
       </div>
     </div>
   );

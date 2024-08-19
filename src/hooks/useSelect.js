@@ -7,6 +7,7 @@ export const useSelect = (type, query, id, subFetch) => {
         movie: "/search/movie",
         tv: "/search/tv",
         all: "/search/multi",
+        person: "/search/person",
       };
       return searchEndpoints[type];
     }
@@ -21,6 +22,7 @@ export const useSelect = (type, query, id, subFetch) => {
       const idEndpoints = {
         movie: `/movie/${id}`,
         tv: `/tv/${id}`,
+        person: `/person/${id}`,
       };
       return idEndpoints[type] || "";
     }

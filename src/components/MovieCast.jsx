@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import placeholder from "../img/placeholder-actor.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./MovieCast.module.css";
@@ -10,7 +10,8 @@ const MovieCast = () => {
   const subFetch = type === "movie" ? "casts" : "credits";
   const endpoint = useSelect(type, "", id, subFetch);
   const { data, error } = useFetch(endpoint);
-  console.log(endpoint);
+  const location = useLocation();
+  console.log(location);
 
   error && toast.error(error);
 
@@ -20,7 +21,12 @@ const MovieCast = () => {
       {data && (
         <ul className={css.actors}>
           {data.cast.map(({ id, profile_path, name, character }) => (
-            <li className={css.actor} key={id}>
+            <Link
+              to={`/person/${id}`}
+              key={id}
+              className={css.actor}
+              state={location}
+            >
               <img
                 className={css.img}
                 src={
@@ -32,7 +38,7 @@ const MovieCast = () => {
               />
               <p>{name}</p>
               <p>Character: {character}</p>
-            </li>
+            </Link>
           ))}
         </ul>
       )}

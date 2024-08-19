@@ -16,6 +16,7 @@ const MovieDetailsPage = () => {
   const location = useLocation();
   const backLinkValue = location.state ?? "/";
   const [backLink] = useState(backLinkValue);
+  console.log(location);
 
   error && toast.error(error);
 
@@ -25,9 +26,10 @@ const MovieDetailsPage = () => {
       <div className={css.content}>
         <BackLinkButton to={backLink} />
         <img
+          className={css.img}
           src={
             data
-              ? `https://image.tmdb.org/t/p/w500/${data.backdrop_path}`
+              ? `https://image.tmdb.org/t/p/w500/${data.poster_path}`
               : placeholder
           }
           alt=""
@@ -39,15 +41,18 @@ const MovieDetailsPage = () => {
             <p>
               <b>User score: </b> {`${Math.ceil(data.vote_average * 10)}%`}
             </p>
-            <p>
-              {type === "movie" ? (
+            {data.release_date && (
+              <p>
                 <b>Release date: </b>
-              ) : (
+                {data.release_date.split("-").join(".")}
+              </p>
+            )}
+            {data.first_air_date && (
+              <p>
                 <b>First air date: </b>
-              )}
-              {data.release_date && data.release_date.split("-").join(".")}
-              {data.first_air_date && data.first_air_date.split("-").join(".")}
-            </p>
+                {data.first_air_date.split("-").join(".")}
+              </p>
+            )}
             <h3>Overview: </h3>
             <p>{data.overview}</p>
             <h3>Genres: </h3>
@@ -55,19 +60,20 @@ const MovieDetailsPage = () => {
               <p>{data.genres.map((genre) => genre.name).join(", ")}</p>
             )}
           </div>
-        )}{" "}
+        )}
       </div>
       <h3 className={css.add}>Additional information:</h3>
       <ul className={css.list}>
         <li>
-          <Link to="cast">
-            {type === "movie" ? "Movie Cast" : "Series Credits"}
+          <Link to="cast" state={location}>
+            {type === "movie" ? "Cast" : "Credits"}
           </Link>
         </li>
         <li>
-          <Link to="reviews">
-            {type === "movie" ? "Movie Reviews" : "Series Review"}
-          </Link>
+          <Link to="reviews">Reviews</Link>
+        </li>
+        <li>
+          <Link to="videos">Videos</Link>
         </li>
       </ul>
 

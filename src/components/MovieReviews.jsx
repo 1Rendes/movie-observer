@@ -2,29 +2,26 @@ import { useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./MovieRewiews.module.css";
 import { useSelect } from "../hooks/useSelect";
-import { useSubfetch } from "../hooks/useSubfetch";
+import { useFetch } from "../hooks/useFetch";
 
 const MovieReviews = () => {
   const { type, id } = useParams();
   const endpoint = useSelect(type, "", id, "reviews");
-  const { data, error } = useSubfetch(endpoint);
+  const { data, error } = useFetch(endpoint);
   error && toast.error(error);
 
-  return (
-    data.results &&
-    (data.results.length > 0 ? (
-      <ul className={css.list}>
-        <Toaster />
-        {data.results.map(({ id, author, content }) => (
-          <li key={id}>
-            <h3>Author: {author}</h3>
-            <p>{content}</p>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p>We do not have any reviews for this movie</p>
-    ))
+  return data?.results?.length > 0 ? (
+    <ul className={css.list}>
+      <Toaster />
+      {data.results.map(({ id, author, content }) => (
+        <li key={id}>
+          <h3>Author: {author}</h3>
+          <p>{content}</p>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>We do not have any reviews for this movie</p>
   );
 };
 
