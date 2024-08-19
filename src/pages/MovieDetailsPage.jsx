@@ -14,9 +14,17 @@ const MovieDetailsPage = () => {
   const endpoint = useSelect(type, query, id);
   const { data, error } = useFetch(endpoint);
   const location = useLocation();
-  const backLinkValue = location.state ?? "/";
+
+  function findPathname(state) {
+    let currentState = state;
+    while (currentState && currentState.state) {
+      currentState = currentState.state;
+    }
+    return currentState ? currentState : "/";
+  }
+  const backLinkValue = findPathname(location);
   const [backLink] = useState(backLinkValue);
-  console.log(location);
+  console.log(backLink);
 
   error && toast.error(error);
 
