@@ -39,6 +39,10 @@ const PersonCombined = () => {
           spaceBetween={15}
           breakpoints={{
             768: {
+              slidesPerView: 4,
+              spaceBetween: 15,
+            },
+            1280: {
               slidesPerView: 6,
               spaceBetween: 15,
             },

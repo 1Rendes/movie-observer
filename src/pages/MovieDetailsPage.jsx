@@ -36,7 +36,14 @@ const MovieDetailsPage = () => {
           alt=""
         />
         {data && (
-          <div className={css.textContent}>
+          <div
+            className={css.textContent}
+            style={{
+              backgroundImage: `linear-gradient(to right, rgb(45, 45, 45), rgba(45,45,45, 0.7), rgb(45, 45, 45)), url(https://image.tmdb.org/t/p/w500/${
+                data && data.backdrop_path
+              })`,
+            }}
+          >
             <h2>{data.title}</h2>
             <h2>{data.name}</h2>
             <p>

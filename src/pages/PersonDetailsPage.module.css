@@ -22,10 +22,22 @@
   }
 }
 .homePage {
-  max-width: 1280px;
+  max-width: 375px;
   margin: 0 auto;
   padding: 15px;
+  padding-top: 0;
 }
+@media (min-width: 768px) {
+  .homePage {
+    max-width: 768px;
+  }
+}
+@media (min-width: 1280px) {
+  .homePage {
+    max-width: 1280px;
+  }
+}
+
 .combined {
   max-width: 500px;
 }

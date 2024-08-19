@@ -21,7 +21,7 @@ const MovieCast = () => {
     <>
       <Toaster />
       {data && (
-        <ul className={css.actors}>
+        <ul className={css.actors} id="actors">
           {data.cast.map(({ id, profile_path, name, character }) => (
             <Link to={`/person/${id}`} key={id} className={css.actor}>
               <img

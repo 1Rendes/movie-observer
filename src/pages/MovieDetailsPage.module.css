@@ -10,7 +10,6 @@
   flex-direction: column;
   gap: 10px;
   border-bottom: 2px solid white;
-  padding-bottom: 15px;
   box-shadow: 0px 24px 20px -23px rgba(0, 0, 0, 0.75);
 }
 @media (min-width: 768px) {
@@ -21,6 +20,7 @@
 }
 .img {
   height: 100%;
+  margin: 15px;
   border-radius: 10px;
 }
 @media (min-width: 768px) {
@@ -30,4 +30,10 @@
 }
 li.actors {
   list-style: none;
+}
+.textContent {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-right: 1px;
 }
