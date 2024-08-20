@@ -33,7 +33,7 @@ const ResultsPage = () => {
       top: 500,
       behavior: "smooth",
     });
-  }, [page, renderData]);
+  }, [page]);
 
   useEffect(() => {
     if (!data) return;
@@ -46,7 +46,7 @@ const ResultsPage = () => {
   }, [data]);
 
   useEffect(() => {
-    if (location.search) {
+    if (searchParams.get("query")) {
       setQuery(searchParams.get("query"));
       setType(searchParams.get("type"));
       setPage(1);
@@ -55,7 +55,7 @@ const ResultsPage = () => {
       setQuery("");
       setType("");
     }
-  }, [location, searchParams]);
+  }, [searchParams]);
 
   return (
     <div className={css.homePage}>
