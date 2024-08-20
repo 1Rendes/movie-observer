@@ -1,7 +1,4 @@
 export function writeToSS(current, prev) {
-  let query = JSON.stringify(current);
-  const data = sessionStorage.getItem(query);
-  if (data) return;
   sessionStorage.setItem(JSON.stringify(current), JSON.stringify(prev));
 }
 
