@@ -53,7 +53,7 @@ export const ResultsListItem = ({ result, type }) => {
             </span>
           </p>
         )}
-        {result.vote_average && (
+        {result.vote_average > 0 && (
           <p className={css.par}>
             Rating:{" "}
             <span className={css.spanPar}>

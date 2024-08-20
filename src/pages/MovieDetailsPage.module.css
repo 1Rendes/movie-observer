@@ -15,12 +15,11 @@
 @media (min-width: 768px) {
   .content {
     flex-direction: row;
-    gap: 10px;
+    gap: 20px;
   }
 }
 .img {
   height: 100%;
-  margin: 15px;
   border-radius: 10px;
 }
 @media (min-width: 768px) {
@@ -36,4 +35,5 @@ li.actors {
   background-repeat: no-repeat;
   background-position: center center;
   margin-right: 1px;
+  width: 100%;
 }

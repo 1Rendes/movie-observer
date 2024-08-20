@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import placeholder from "../img/placeholder-actor.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./MovieCast.module.css";
@@ -11,6 +11,7 @@ const MovieCast = () => {
   const subFetch = type === "movie" ? "casts" : "credits";
   const endpoint = useSelect(type, "", id, subFetch);
   const { data, error } = useFetch(endpoint);
+  const location = useLocation();
 
   useEffect(() => {
     if (!error) return;
@@ -39,7 +40,12 @@ const MovieCast = () => {
                 key = credit_id;
               }
               return (
-                <Link to={`/person/${id}`} key={key} className={css.actor}>
+                <Link
+                  to={`/person/${id}`}
+                  key={key}
+                  className={css.actor}
+                  state={location}
+                >
                   <img
                     className={css.img}
                     src={

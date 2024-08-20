@@ -1,11 +1,12 @@
 import { useFetch } from "../hooks/useFetch";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./HomePage.module.css";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelect } from "../hooks/useSelect";
 import ResultsList from "../components/ResultsList";
 import { LoadMoreResults } from "../components/LoadMoreResults";
+import { writeToSS } from "../helpers/sessionStorage";
 
 const ResultsPage = () => {
   const [searchParams] = useSearchParams();
@@ -20,6 +21,8 @@ const ResultsPage = () => {
     const newPage = page + 1;
     setPage(newPage);
   };
+  const location = useLocation();
+  writeToSS(location.pathname);
 
   useEffect(() => {
     if (!error) return;
@@ -36,8 +39,6 @@ const ResultsPage = () => {
 
   useEffect(() => {
     if (!data) return;
-    console.log(renderData);
-
     setTotalPages(data.total_pages);
     setRenderData((prevData) => {
       return [...prevData, ...data.results];

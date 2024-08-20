@@ -12,7 +12,7 @@ import { IoIosArrowForward } from "react-icons/io";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
-const PersonCombined = () => {
+const PersonCombined = ({ state }) => {
   const { id } = useParams();
   const type = "person";
   const query = "";
@@ -50,7 +50,7 @@ const PersonCombined = () => {
           {data.cast.map((result) => {
             return (
               <SwiperSlide className="swiper-slide" key={result.credit_id}>
-                <Link to={`/${result.media_type}/${result.id}`}>
+                <Link to={`/${result.media_type}/${result.id}`} state={state}>
                   <MovieListItem result={result} />
                 </Link>
               </SwiperSlide>

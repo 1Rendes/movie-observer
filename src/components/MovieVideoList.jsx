@@ -10,7 +10,6 @@ const MovieVideoList = () => {
   const { type, id } = useParams();
   const endpoint = useSelect(type, "", id, "videos");
   const { data, error } = useFetch(endpoint);
-  console.log(data);
 
   useEffect(() => {
     if (!error) return;
