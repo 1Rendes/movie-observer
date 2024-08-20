@@ -78,7 +78,7 @@ const PersonDetailsPage = () => {
           </div>
         </div>
       )}
-      <h3 className={css.known}>Known by:</h3>
+      <h3 className={css.known}>Known for:</h3>
       <PersonCombined className={css.combined} />
     </div>
   );

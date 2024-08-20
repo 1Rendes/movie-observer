@@ -14,3 +14,11 @@
 .par {
   margin: 0;
 }
+.spanPar {
+  color: grey;
+}
+.parName {
+  font-weight: 600;
+  font-size: 20px;
+  margin: 0;
+}
