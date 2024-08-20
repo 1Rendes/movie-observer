@@ -37,6 +37,8 @@ const ResultsPage = () => {
 
   useEffect(() => {
     if (!data) return;
+    console.log(renderData);
+
     setTotalPages(data.total_pages);
     setRenderData((prevData) => {
       return [...prevData, ...data.results];

@@ -46,7 +46,11 @@ const PersonDetailsPage = () => {
               {data.gender === 2 ? "Male" : "Female"}
             </p>
             <p className={css.descr}>
-              <b>Birthday:</b> {data.birthday.split("-").join(".")}
+              {data.birthday && (
+                <p className={css.descr}>
+                  <b>Birthday:</b> {data.birthday.split("-").join(".")}
+                </p>
+              )}
             </p>
             <p className={css.descr}>
               <b>Place of birth:</b> {data.place_of_birth}

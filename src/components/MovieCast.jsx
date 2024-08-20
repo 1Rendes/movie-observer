@@ -30,23 +30,33 @@ const MovieCast = () => {
       <Toaster />
       {data && (
         <ul className={css.actors} id="actors">
-          {data.cast.map(({ id, profile_path, name, character }) => (
-            <Link to={`/person/${id}`} key={id} className={css.actor}>
-              <img
-                className={css.img}
-                src={
-                  profile_path
-                    ? `https://image.tmdb.org/t/p/w500/${profile_path}`
-                    : placeholder
-                }
-                alt=""
-              />
-              <div className={css.textContent}>
-                <p className={css.descr}>{name}</p>
-                <p className={css.descr}>Character: {character}</p>
-              </div>
-            </Link>
-          ))}
+          {data.cast.map(
+            ({ cast_id, credit_id, id, profile_path, name, character }) => {
+              let key;
+              if (cast_id) {
+                key = cast_id;
+              } else {
+                key = credit_id;
+              }
+              return (
+                <Link to={`/person/${id}`} key={key} className={css.actor}>
+                  <img
+                    className={css.img}
+                    src={
+                      profile_path
+                        ? `https://image.tmdb.org/t/p/w500/${profile_path}`
+                        : placeholder
+                    }
+                    alt=""
+                  />
+                  <div className={css.textContent}>
+                    <p className={css.descr}>{name}</p>
+                    <p className={css.descr}>Character: {character}</p>
+                  </div>
+                </Link>
+              );
+            }
+          )}
         </ul>
       )}
     </>

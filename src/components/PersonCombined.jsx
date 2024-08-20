@@ -18,7 +18,6 @@ const PersonCombined = () => {
   const query = "";
   const endpoint = useSelect(type, query, id, "combined_credits");
   const { data, error } = useFetch(endpoint);
-  console.log(data);
 
   useEffect(() => {
     if (!error) return;
