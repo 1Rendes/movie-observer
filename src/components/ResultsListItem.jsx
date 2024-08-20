@@ -9,6 +9,8 @@ export const ResultsListItem = ({ result, type }) => {
         src={
           result.backdrop_path
             ? `https://image.tmdb.org/t/p/w500/${result.poster_path}`
+            : result.profile_path
+            ? `https://image.tmdb.org/t/p/w500/${result.profile_path}`
             : placeholder
         }
       />

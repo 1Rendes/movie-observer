@@ -3,12 +3,21 @@ import toast, { Toaster } from "react-hot-toast";
 import css from "./MovieRewiews.module.css";
 import { useSelect } from "../hooks/useSelect";
 import { useFetch } from "../hooks/useFetch";
+import { useEffect } from "react";
 
 const MovieReviews = () => {
   const { type, id } = useParams();
   const endpoint = useSelect(type, "", id, "reviews");
   const { data, error } = useFetch(endpoint);
   error && toast.error(error);
+
+  useEffect(() => {
+    if (!data) return;
+    window.scrollBy({
+      top: 300,
+      behavior: "smooth",
+    });
+  }, [data]);
 
   return data?.results?.length > 0 ? (
     <ul className={css.list}>

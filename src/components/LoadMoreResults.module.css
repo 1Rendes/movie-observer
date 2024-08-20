@@ -1,0 +1,24 @@
+.button {
+  background-color: orange;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  height: 40px;
+  color: rgb(45, 45, 45);
+  margin: 20px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 150ms ease-in-out, box-shadow 150ms ease-in-out,
+    color 150ms ease-in-out;
+}
+.button:hover,
+.button:focus {
+  background-color: rgb(255, 203, 107);
+  box-shadow: 0px 0px 11px 5px #ffffff;
+  color: white;
+}
+.div {
+  width: 100%;
+  text-align: center;
+}

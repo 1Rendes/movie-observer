@@ -17,6 +17,14 @@ const MovieVideoList = () => {
     toast.error(error);
   }, [error]);
 
+  useEffect(() => {
+    if (!data) return;
+    window.scrollBy({
+      top: 300,
+      behavior: "smooth",
+    });
+  }, [data]);
+
   return (
     <>
       {data && (

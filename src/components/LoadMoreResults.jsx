@@ -1,13 +1,14 @@
-import { useNavigate } from "react-router-dom";
+import css from "./LoadMoreResults.module.css";
 
-export const LoadMoreResults = ({ query, type, page }) => {
-  const navigate = useNavigate();
+export const LoadMoreResults = ({ handleLoadMore }) => {
   const handleClick = () => {
-    navigate(`/results/?query=${query}&type=${type}&page=${page++}`);
+    handleLoadMore();
   };
   return (
-    <button type="button" onClick={handleClick}>
+    <div className={css.div}>
+    <button type="button" className={css.button} onClick={handleClick}>
       Load More
     </button>
+    </div>
   );
 };

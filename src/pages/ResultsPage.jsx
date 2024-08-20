@@ -5,15 +5,22 @@ import { useLocation, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelect } from "../hooks/useSelect";
 import ResultsList from "../components/ResultsList";
+import { LoadMoreResults } from "../components/LoadMoreResults";
 
 const ResultsPage = () => {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("query"));
   const [type, setType] = useState(searchParams.get("type"));
-  const [page] = useState(1);
+  const [page, setPage] = useState(1);
   const endpoint = useSelect(type, query);
   const { data, error } = useFetch(endpoint, query, page);
   const location = useLocation();
+  const [renderData, setRenderData] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const handleLoadMore = () => {
+    const newPage = page + 1;
+    setPage(newPage);
+  };
 
   useEffect(() => {
     if (!error) return;
@@ -21,9 +28,27 @@ const ResultsPage = () => {
   }, [error]);
 
   useEffect(() => {
+    if (page === 1) return;
+    window.scrollBy({
+      top: 500,
+      behavior: "smooth",
+    });
+  }, [page, renderData]);
+
+  useEffect(() => {
+    if (!data) return;
+    setTotalPages(data.total_pages);
+    setRenderData((prevData) => {
+      return [...prevData, ...data.results];
+    });
+  }, [data]);
+
+  useEffect(() => {
     if (location.search) {
       setQuery(searchParams.get("query"));
       setType(searchParams.get("type"));
+      setPage(1);
+      setRenderData([]);
     } else {
       setQuery("");
       setType("");
@@ -34,10 +59,11 @@ const ResultsPage = () => {
     <div className={css.homePage}>
       <Toaster />
       <h3>Results:</h3>
-      {data && <ResultsList movieList={data.results} type={type} />}
+      {data && <ResultsList movieList={renderData} type={type} />}
       {data?.results?.length === 0 && (
         <p>We didn&apos;t find any data for Your request</p>
       )}
+      {page < totalPages && <LoadMoreResults handleLoadMore={handleLoadMore} />}
     </div>
   );
 };

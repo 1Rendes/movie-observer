@@ -51,8 +51,10 @@ const PersonDetailsPage = () => {
             <p className={css.descr}>
               <b>Place of birth:</b> {data.place_of_birth}
             </p>
-            <p className={css.descr}>
-              <b>Biography: </b>
+            <div className={css.descr}>
+              <p>
+                <b>Biography: </b>
+              </p>
               <ReactShowMoreText
                 lines={6}
                 more="Show more"
@@ -64,7 +66,7 @@ const PersonDetailsPage = () => {
               >
                 {data.biography}
               </ReactShowMoreText>
-            </p>
+            </div>
             {data.deathday && (
               <p className={css.descr}>
                 <b>Deathday: </b>
