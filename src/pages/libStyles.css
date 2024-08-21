@@ -7,19 +7,16 @@
 .show-more-less-clickable:hover {
   color: white;
 }
-.CircularProgressbar {
-  width: 90%;
-}
-.CircularProgressbar .CircularProgressbar-path {
+#root .CircularProgressbar .CircularProgressbar-path {
   stroke: greenyellow;
 }
-.CircularProgressbar .CircularProgressbar-trail {
+#root .CircularProgressbar .CircularProgressbar-trail {
   stroke: gray;
 }
-.CircularProgressbar .CircularProgressbar-text {
+#root .CircularProgressbar .CircularProgressbar-text {
   fill: greenyellow;
 }
-.CircularProgressbar .CircularProgressbar-background {
+#root .CircularProgressbar .CircularProgressbar-background {
   fill: rgb(26, 26, 26);
   padding: 10px;
 }
