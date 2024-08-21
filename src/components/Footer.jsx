@@ -3,7 +3,17 @@ import css from "./Footer.module.css";
 const Footer = () => {
   return (
     <div className={css.div}>
-      <p className={css.par}>Application created for educational purposes.</p>
+      <p className={css.par}>
+        Application based on{" "}
+        <a
+          className={css.link}
+          target="blank"
+          href="https://developer.themoviedb.org/docs/getting-started"
+        >
+          {" "}
+          TMDB API.
+        </a>
+      </p>
       <p className={css.par}>
         Information provided for informational purposes, citation only with
         reference to the{" "}
