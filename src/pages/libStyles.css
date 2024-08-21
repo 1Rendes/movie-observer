@@ -1,0 +1,25 @@
+.show-more-less-clickable {
+  color: orange;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.show-more-less-clickable:hover {
+  color: white;
+}
+.CircularProgressbar {
+  width: 90%;
+}
+.CircularProgressbar .CircularProgressbar-path {
+  stroke: greenyellow;
+}
+.CircularProgressbar .CircularProgressbar-trail {
+  stroke: gray;
+}
+.CircularProgressbar .CircularProgressbar-text {
+  fill: greenyellow;
+}
+.CircularProgressbar .CircularProgressbar-background {
+  fill: rgb(26, 26, 26);
+  padding: 10px;
+}

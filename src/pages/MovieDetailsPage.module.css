@@ -24,7 +24,7 @@
 }
 @media (min-width: 768px) {
   .img {
-    height: 400px;
+    height: 500px;
   }
 }
 li.actors {
@@ -36,4 +36,53 @@ li.actors {
   background-position: center center;
   margin-right: 1px;
   width: 100%;
+}
+.year {
+  font-weight: 400;
+}
+.libRating {
+  width: 70px;
+  padding: 5px;
+}
+.rating {
+  align-items: center;
+  display: flex;
+}
+.par {
+  margin: 0;
+  color: rgb(174, 174, 174);
+}
+.header {
+  margin: 0;
+}
+.nameDiv {
+  margin-bottom: 10px;
+}
+.tag {
+  font-weight: 500;
+  color: rgb(174, 174, 174);
+  font-style: italic;
+}
+.headPar {
+  margin: 0;
+}
+.additionalData {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+@media (min-width: 1280px) {
+  .additionalData {
+    margin-top: 50px;
+  }
+}
+.addElement {
+  width: 45%;
+}
+.voteSpan {
+  color: rgb(174, 174, 174);
+  font-style: italic;
+  font-size: 12px;
 }

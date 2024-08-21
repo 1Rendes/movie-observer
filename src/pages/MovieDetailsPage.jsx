@@ -8,6 +8,9 @@ import homeCss from "./HomePage.module.css";
 import css from "./MovieDetailsPage.module.css";
 import { useSelect } from "../hooks/useSelect";
 import { readFromSS, writeToSS } from "../helpers/sessionStorage";
+import { CircularProgressbar } from "react-circular-progressbar";
+import "react-circular-progressbar/dist/styles.css";
+import "./libStyles.css";
 
 const MovieDetailsPage = () => {
   const { type, id } = useParams();
@@ -46,29 +49,80 @@ const MovieDetailsPage = () => {
               })`,
             }}
           >
-            <h2>{data.title}</h2>
-            <h2>{data.name}</h2>
-            <p>
-              <b>User score: </b> {`${Math.ceil(data.vote_average * 10)}%`}
-            </p>
-            {data.release_date && (
-              <p>
-                <b>Release date: </b>
-                {data.release_date.split("-").join(".")}
-              </p>
+            {data.title && (
+              <div className={css.nameDiv}>
+                <h2 className={css.header}>
+                  {data.title}
+                  <span className={css.year}>
+                    {" ("}
+                    {data.release_date.slice(0, 4)}
+                    {")"}
+                  </span>
+                </h2>
+                <p className={css.par}>
+                  {data.release_date.split("-").join(".")} <b>&middot;</b>{" "}
+                  {data.genres.map((genre) => genre.name).join(", ")}{" "}
+                  <b>&middot;</b> {data.runtime} min
+                </p>
+              </div>
             )}
-            {data.first_air_date && (
+            {data.name && (
+              <div className={css.nameDiv}>
+                <h2 className={css.header}>
+                  {data.name}
+                  <span className={css.year}>
+                    {" ("}
+                    {data.first_air_date.slice(0, 4)}
+                    {")"}
+                  </span>
+                </h2>
+                <p className={css.par}>
+                  {data.first_air_date.split("-").join(".")} <b>&middot;</b>{" "}
+                  {data.genres.map((genre) => genre.name).join(", ")}
+                </p>
+              </div>
+            )}
+            <div className={css.rating}>
+              <div className={css.libRating}>
+                <CircularProgressbar
+                  background
+                  backgroundPadding={10}
+                  className="CircularProgressbar"
+                  value={Math.ceil(data.vote_average * 10)}
+                  text={`${Math.ceil(data.vote_average * 10)}%`}
+                />
+              </div>
               <p>
-                <b>First air date: </b>
-                {data.first_air_date.split("-").join(".")}
+                <b>User score</b>
+                <br />
+                <span className={css.voteSpan}>
+                  {data.vote_count && `${data.vote_count} votes`}
+                </span>
               </p>
+            </div>
+            {data.tagline && (
+              <p className={css.tag}>&quot;{data.tagline}&quot;</p>
             )}
             <h3>Overview: </h3>
             <p>{data.overview}</p>
-            <h3>Genres: </h3>
-            {data.genres && (
-              <p>{data.genres.map((genre) => genre.name).join(", ")}</p>
-            )}
+            <div className={css.additionalData}>
+              <div className={css.addElement}>
+                <p className={css.headPar}>Status: </p>
+                <p className={css.par}>{data.status}</p>
+              </div>
+              <div className={css.addElement}>
+                <p className={css.headPar}>Budget: </p>
+                <p className={css.par}>{data.budget}</p>
+              </div>
+              <div className={css.addElement}>
+                <p className={css.headPar}>Origin country: </p>
+                <p className={css.par}>{data.origin_country[0]}</p>
+              </div>
+              <div className={css.addElement}>
+                <p className={css.headPar}>Revenue: </p>
+                <p className={css.par}>{data.revenue}</p>
+              </div>
+            </div>
           </div>
         )}
       </div>

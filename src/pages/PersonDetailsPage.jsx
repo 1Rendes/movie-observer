@@ -8,7 +8,7 @@ import placeholder from "../img/placeholder-actor.jpg";
 import css from "./PersonDetailsPage.module.css";
 import PersonCombined from "../components/PersonCombined";
 import ReactShowMoreText from "react-show-more-text";
-import "./showMore.css";
+import "./libStyles.css";
 import { readFromSS, writeToSS } from "../helpers/sessionStorage";
 
 const PersonDetailsPage = () => {
