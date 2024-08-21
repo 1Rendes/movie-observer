@@ -17,7 +17,7 @@ export const useFetch = (endpoint, query, page) => {
       try {
         const { data } = await axios.get(endpoint, { params });
         setData(data);
-        console.log("endpoint:", endpoint, "query:", query, data);
+        // console.log("endpoint:", endpoint, "query:", query, data);
       } catch (error) {
         setError(error);
       }

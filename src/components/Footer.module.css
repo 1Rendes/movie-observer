@@ -5,7 +5,6 @@
   flex-direction: column;
   padding: 15px;
   margin: 0 auto;
-  width: 375px;
   border-top: 2px solid grey;
 }
 @media (min-width: 768px) {
@@ -21,6 +20,12 @@
 .par {
   color: grey;
   margin: 0;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .par {
+    text-align: left;
+  }
 }
 .link {
   color: grey;
