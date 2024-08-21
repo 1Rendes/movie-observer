@@ -18,10 +18,21 @@ const Footer = () => {
         , 2024.
       </p>
       <div className={css.links}>
-        <a className={css.link} href="mailto: 1admin@ukr.net">
+        <a
+          target="blank"
+          className={css.link}
+          href="https://www.linkedin.com/in/volodymyr-solonin-0575b22a6/"
+        >
+          LinkedIn
+        </a>
+        <a target="blank" className={css.link} href="mailto: 1admin@ukr.net">
           Contact us
         </a>
-        <a className={css.link} href="https://github.com/1Rendes">
+        <a
+          target="blank"
+          className={css.link}
+          href="https://github.com/1Rendes"
+        >
           GitHub
         </a>
       </div>
