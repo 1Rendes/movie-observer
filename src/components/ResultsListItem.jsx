@@ -1,5 +1,6 @@
 import css from "./ResultsListItem.module.css";
 import placeholder from "../img/placeholder-image.webp";
+import { formatDate } from "../helpers/dateFormat";
 
 export const ResultsListItem = ({ result, type }) => {
   return (
@@ -17,25 +18,31 @@ export const ResultsListItem = ({ result, type }) => {
       <div className={css.data}>
         {result.title && <p className={css.parName}>{result.title}</p>}
         {result.name && <p className={css.parName}>{result.name}</p>}
-        {result.media_type && (
+        <div className={css.typeDate}>
+          {result.media_type && (
+            <p className={css.par}>
+              {type === "tv" ? `Series` : type === "movie" ? `Movie` : "Person"}
+            </p>
+          )}
           <p className={css.par}>
-            {type === "tv" ? "Series" : type === "movie" ? "Movie" : "Person"}
+            <b>&middot;</b>
           </p>
-        )}
-        {result.release_date && (
-          <p className={css.par}>
-            Release date <b>&middot; </b>
-            <span className={css.spanPar}>
-              {result.release_date.split("-").join(".")}
-            </span>
-          </p>
-        )}
-        {result.first_air_date && (
-          <p className={css.par}>
-            First air date <b>&middot; </b>
-            <span className={css.spanPar}> {result.first_air_date}</span>
-          </p>
-        )}
+          {result.release_date && (
+            <p className={css.par}>
+              <span className={css.spanPar}>
+                {formatDate(result.release_date)}
+              </span>
+            </p>
+          )}
+          {result.first_air_date && (
+            <p className={css.par}>
+              <span className={css.spanPar}>
+                {" "}
+                {formatDate(result.first_air_date)}
+              </span>
+            </p>
+          )}
+        </div>
         {result.known_for && (
           <p className={css.par}>
             Knows for <b>&middot; </b>
@@ -61,6 +68,7 @@ export const ResultsListItem = ({ result, type }) => {
             </span>
           </p>
         )}
+        <p className={css.overview}>{result.overview}</p>
       </div>
     </div>
   );

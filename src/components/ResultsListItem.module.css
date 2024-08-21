@@ -1,6 +1,7 @@
 .image {
   width: 100px;
   display: flex;
+  border-radius: 10px;
 }
 .div {
   display: flex;
@@ -21,4 +22,36 @@
   font-weight: 600;
   font-size: 20px;
   margin: 0;
+}
+.typeDate {
+  display: flex;
+  gap: 12px;
+}
+.overview {
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+@media (min-width: 1280px) {
+  .overview {
+    color: rgb(187, 187, 187);
+    opacity: 1;
+    position: static;
+    pointer-events: auto;
+    width: 1150px;
+    margin: 10px 0 0 0;
+    height: 1em;
+    overflow: hidden;
+    line-height: 1.5em;
+    height: 3em;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+}
+.overview:hover {
+  color: orange;
 }
