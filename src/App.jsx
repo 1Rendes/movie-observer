@@ -3,6 +3,7 @@ import Navigation from "./components/Navigation";
 import NotFoundPage from "./pages/NotFoundPage";
 import { lazy, Suspense } from "react";
 import MovieVideoList from "./components/MovieVideoList";
+import Footer from "./components/Footer";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage"));
@@ -28,6 +29,7 @@ const App = () => {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
+      <Footer />
     </div>
   );
 };

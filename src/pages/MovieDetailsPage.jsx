@@ -13,6 +13,7 @@ import "react-circular-progressbar/dist/styles.css";
 import "./libStyles.css";
 import { formatDate } from "../helpers/dateFormat";
 import ReactShowMoreText from "react-show-more-text";
+import Recomendations from "../components/Recommendations";
 
 const MovieDetailsPage = () => {
   const { type, id } = useParams();
@@ -125,7 +126,7 @@ const MovieDetailsPage = () => {
                 </div>
                 <div className={css.addElement}>
                   <p className={css.headPar}>Budget: </p>
-                  <p className={css.par}>{data.budget}</p>
+                  <p className={css.par}>{data.budget ? data.budget : "-"}</p>
                 </div>
                 <div className={css.addElement}>
                   <p className={css.headPar}>Origin country: </p>
@@ -133,7 +134,7 @@ const MovieDetailsPage = () => {
                 </div>
                 <div className={css.addElement}>
                   <p className={css.headPar}>Revenue: </p>
-                  <p className={css.par}>{data.revenue}</p>
+                  <p className={css.par}>{data.revenue ? data.revenue : "-"}</p>
                 </div>
               </div>
             )}
@@ -178,10 +179,10 @@ const MovieDetailsPage = () => {
           </Link>
         </li>
       </ul>
-
       <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />
       </Suspense>
+      <Recomendations state={location} />
     </main>
   );
 };

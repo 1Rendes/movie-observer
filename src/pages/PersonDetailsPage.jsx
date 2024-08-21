@@ -10,6 +10,7 @@ import PersonCombined from "../components/PersonCombined";
 import ReactShowMoreText from "react-show-more-text";
 import "./libStyles.css";
 import { readFromSS, writeToSS } from "../helpers/sessionStorage";
+import { formatDate } from "../helpers/dateFormat";
 
 const PersonDetailsPage = () => {
   const { id } = useParams();
@@ -51,7 +52,7 @@ const PersonDetailsPage = () => {
             </p>
             {data.birthday && (
               <p className={css.descr}>
-                <b>Birthday:</b> {data.birthday.split("-").join(".")}
+                <b>Birthday:</b> {formatDate(data.birthday)}
               </p>
             )}
             <p className={css.descr}>
@@ -70,7 +71,9 @@ const PersonDetailsPage = () => {
                 expanded={false}
                 truncatedEndingComponent={"... "}
               >
-                {data.biography}
+                {data.biography
+                  ? data.biography
+                  : `We don't have biography for ${data.name}.`}
               </ReactShowMoreText>
             </div>
             {data.deathday && (

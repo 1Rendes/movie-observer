@@ -1,0 +1,32 @@
+.div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 15px;
+  margin: 0 auto;
+  width: 375px;
+  border-top: 2px solid grey;
+}
+@media (min-width: 768px) {
+  .div {
+    width: 768px;
+  }
+}
+@media (min-width: 1280px) {
+  .div {
+    width: 1280px;
+  }
+}
+.par {
+  color: grey;
+  margin: 0;
+}
+.link {
+  color: grey;
+  text-decoration: underline;
+}
+.links {
+  display: flex;
+  gap: 10px;
+}
