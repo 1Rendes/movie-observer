@@ -71,7 +71,12 @@ li.actors {
   flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 15px;
-  margin-top: 0;
+  margin-top: 15px;
+}
+@media (min-width: 768px) {
+  .additionalData {
+    margin-top: 20px;
+  }
 }
 @media (min-width: 1280px) {
   .additionalData {

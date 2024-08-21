@@ -11,6 +11,8 @@ import { readFromSS, writeToSS } from "../helpers/sessionStorage";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import "./libStyles.css";
+import { formatDate } from "../helpers/dateFormat";
+import ReactShowMoreText from "react-show-more-text";
 
 const MovieDetailsPage = () => {
   const { type, id } = useParams();
@@ -60,7 +62,7 @@ const MovieDetailsPage = () => {
                   </span>
                 </h2>
                 <p className={css.par}>
-                  {data.release_date.split("-").join(".")} <b>&middot;</b>{" "}
+                  {formatDate(data.release_date)} <b>&middot;</b>{" "}
                   {data.genres.map((genre) => genre.name).join(", ")}{" "}
                   <b>&middot;</b> {data.runtime} min
                 </p>
@@ -77,7 +79,7 @@ const MovieDetailsPage = () => {
                   </span>
                 </h2>
                 <p className={css.par}>
-                  {data.first_air_date.split("-").join(".")} <b>&middot;</b>{" "}
+                  {formatDate(data.first_air_date)} <b>&middot;</b>{" "}
                   {data.genres.map((genre) => genre.name).join(", ")}
                 </p>
               </div>
@@ -104,25 +106,57 @@ const MovieDetailsPage = () => {
               <p className={css.tag}>&quot;{data.tagline}&quot;</p>
             )}
             <h3>Overview: </h3>
-            <p>{data.overview}</p>
-            <div className={css.additionalData}>
-              <div className={css.addElement}>
-                <p className={css.headPar}>Status: </p>
-                <p className={css.par}>{data.status}</p>
+            <ReactShowMoreText
+              lines={6}
+              more="Show more"
+              less="Show less"
+              className="content-css"
+              anchorClass="show-more-less-clickable"
+              expanded={false}
+              truncatedEndingComponent={"... "}
+            >
+              {data.overview}
+            </ReactShowMoreText>
+            {data.title && (
+              <div className={css.additionalData}>
+                <div className={css.addElement}>
+                  <p className={css.headPar}>Status: </p>
+                  <p className={css.par}>{data.status}</p>
+                </div>
+                <div className={css.addElement}>
+                  <p className={css.headPar}>Budget: </p>
+                  <p className={css.par}>{data.budget}</p>
+                </div>
+                <div className={css.addElement}>
+                  <p className={css.headPar}>Origin country: </p>
+                  <p className={css.par}>{data.origin_country[0]}</p>
+                </div>
+                <div className={css.addElement}>
+                  <p className={css.headPar}>Revenue: </p>
+                  <p className={css.par}>{data.revenue}</p>
+                </div>
               </div>
-              <div className={css.addElement}>
-                <p className={css.headPar}>Budget: </p>
-                <p className={css.par}>{data.budget}</p>
+            )}
+            {data.name && (
+              <div className={css.additionalData}>
+                <div className={css.addElement}>
+                  <p className={css.headPar}>Status: </p>
+                  <p className={css.par}>{data.status}</p>
+                </div>
+                <div className={css.addElement}>
+                  <p className={css.headPar}>Number of episodes: </p>
+                  <p className={css.par}>{data.number_of_episodes}</p>
+                </div>
+                <div className={css.addElement}>
+                  <p className={css.headPar}>Origin country: </p>
+                  <p className={css.par}>{data.origin_country[0]}</p>
+                </div>
+                <div className={css.addElement}>
+                  <p className={css.headPar}>Number of seasons: </p>
+                  <p className={css.par}>{data.number_of_seasons}</p>
+                </div>
               </div>
-              <div className={css.addElement}>
-                <p className={css.headPar}>Origin country: </p>
-                <p className={css.par}>{data.origin_country[0]}</p>
-              </div>
-              <div className={css.addElement}>
-                <p className={css.headPar}>Revenue: </p>
-                <p className={css.par}>{data.revenue}</p>
-              </div>
-            </div>
+            )}
           </div>
         )}
       </div>
