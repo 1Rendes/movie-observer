@@ -13,7 +13,7 @@ import "react-circular-progressbar/dist/styles.css";
 import "./libStyles.css";
 import { formatDate } from "../helpers/dateFormat";
 import ReactShowMoreText from "react-show-more-text";
-import Recomendations from "../components/Recommendations";
+import SwiperList from "../components/SwiperList";
 
 const MovieDetailsPage = () => {
   const { type, id } = useParams();
@@ -182,7 +182,12 @@ const MovieDetailsPage = () => {
       <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />
       </Suspense>
-      <Recomendations state={location} />
+      <SwiperList
+        state={location}
+        path={"results"}
+        subFetch={"recommendations"}
+        pathId={"id"}
+      />
     </main>
   );
 };

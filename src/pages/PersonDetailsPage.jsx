@@ -6,11 +6,11 @@ import toast, { Toaster } from "react-hot-toast";
 import BackLinkButton from "../components/BackLinkButton";
 import placeholder from "../img/placeholder-actor.jpg";
 import css from "./PersonDetailsPage.module.css";
-import PersonCombined from "../components/PersonCombined";
 import ReactShowMoreText from "react-show-more-text";
 import "./libStyles.css";
 import { readFromSS, writeToSS } from "../helpers/sessionStorage";
 import { formatDate } from "../helpers/dateFormat";
+import SwiperList from "../components/SwiperList";
 
 const PersonDetailsPage = () => {
   const { id } = useParams();
@@ -86,7 +86,13 @@ const PersonDetailsPage = () => {
         </div>
       )}
       <h3 className={css.known}>Known for:</h3>
-      <PersonCombined className={css.combined} state={location} />
+      <SwiperList
+        className={css.combined}
+        state={location}
+        path={"cast"}
+        subFetch={"combined_credits"}
+        pathId={"credit_id"}
+      />
     </div>
   );
 };

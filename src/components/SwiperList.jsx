@@ -12,11 +12,10 @@ import { IoIosArrowForward } from "react-icons/io";
 import { useEffect } from "react";
 import toast from "react-hot-toast";
 
-const PersonCombined = ({ state }) => {
-  const { id } = useParams();
-  const type = "person";
+const SwiperList = ({ state, path, subFetch, pathId }) => {
+  const { type = "person", id } = useParams();
   const query = "";
-  const endpoint = useSelect(type, query, id, "combined_credits");
+  const endpoint = useSelect(type, query, id, subFetch);
   const { data, error } = useFetch(endpoint);
 
   useEffect(() => {
@@ -47,9 +46,9 @@ const PersonCombined = ({ state }) => {
             },
           }}
         >
-          {data.cast.map((result) => {
+          {data[path]?.map((result) => {
             return (
-              <SwiperSlide className="swiper-slide" key={result.credit_id}>
+              <SwiperSlide className="swiper-slide" key={result[pathId]}>
                 <Link to={`/${result.media_type}/${result.id}`} state={state}>
                   <MovieListItem result={result} />
                 </Link>
@@ -64,4 +63,4 @@ const PersonCombined = ({ state }) => {
   );
 };
 
-export default PersonCombined;
+export default SwiperList;
