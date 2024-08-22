@@ -182,6 +182,7 @@ const MovieDetailsPage = () => {
       <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />
       </Suspense>
+      <h4>Related content:</h4>
       <SwiperList
         state={location}
         path={"results"}
