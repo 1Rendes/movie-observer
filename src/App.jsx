@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import NotFoundPage from "./pages/NotFoundPage";
 import { lazy, Suspense } from "react";
-import MovieVideoList from "./components/MovieVideoList";
+// import MovieVideoList from "./components/MovieVideoList";
 import Footer from "./components/Footer";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -11,6 +11,7 @@ const MovieReviews = lazy(() => import("./components/MovieReviews"));
 const MovieCast = lazy(() => import("./components/MovieCast"));
 const ResultsPage = lazy(() => import("./pages/ResultsPage"));
 const PersonDetailsPage = lazy(() => import("./pages/PersonDetailsPage"));
+const MovieVideoList = lazy(() => import("./components/MovieVideoList"));
 
 const App = () => {
   return (

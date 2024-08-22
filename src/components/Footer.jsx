@@ -41,7 +41,7 @@ const Footer = () => {
         <a
           target="blank"
           className={css.link}
-          href="https://github.com/1Rendes"
+          href="https://github.com/1Rendes/movie-observer"
         >
           GitHub
         </a>
