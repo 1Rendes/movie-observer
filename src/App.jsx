@@ -1,17 +1,19 @@
-import { Route, Routes } from "react-router-dom";
-import Navigation from "./components/Navigation";
-import NotFoundPage from "./pages/NotFoundPage";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Navigation from "./components/Navigation/Navigation";
 import { lazy, Suspense } from "react";
-// import MovieVideoList from "./components/MovieVideoList";
-import Footer from "./components/Footer";
+import Footer from "./components/Footer/Footer";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const MovieDetailsPage = lazy(() => import("./pages/MovieDetailsPage"));
-const MovieReviews = lazy(() => import("./components/MovieReviews"));
-const MovieCast = lazy(() => import("./components/MovieCast"));
+const MovieReviews = lazy(() =>
+  import("./components/MovieReviews/MovieReviews")
+);
+const MovieCast = lazy(() => import("./components/MovieCast/MovieCast"));
 const ResultsPage = lazy(() => import("./pages/ResultsPage"));
 const PersonDetailsPage = lazy(() => import("./pages/PersonDetailsPage"));
-const MovieVideoList = lazy(() => import("./components/MovieVideoList"));
+const MovieVideoList = lazy(() =>
+  import("./components/MovieVideoList/MovieVideoList")
+);
 
 const App = () => {
   return (
@@ -27,7 +29,7 @@ const App = () => {
             <Route path="videos" element={<MovieVideoList />} />
           </Route>
           <Route path="/person/:id" element={<PersonDetailsPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path="*" element={<Navigate to={"/"} />} />
         </Routes>
       </Suspense>
       <Footer />

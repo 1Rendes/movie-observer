@@ -7,7 +7,7 @@ import BackLinkButton from "../components/BackLinkButton";
 import placeholder from "../img/placeholder-actor.jpg";
 import css from "./PersonDetailsPage.module.css";
 import ReactShowMoreText from "react-show-more-text";
-import "./libStyles.css";
+import "../components/libStyles.css";
 import { readFromSS, writeToSS } from "../helpers/sessionStorage";
 import { formatDate } from "../helpers/dateFormat";
 import SwiperList from "../components/SwiperList";

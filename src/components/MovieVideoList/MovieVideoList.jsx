@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import { useSelect } from "../hooks/useSelect";
-import { useFetch } from "../hooks/useFetch";
-import VideoPlayer from "./VideoPlayer";
+import { useSelect } from "../../hooks/useSelect";
+import { useFetch } from "../../hooks/useFetch";
+import VideoPlayer from "../VideoPlayer";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 import css from "./MovieVideoList.module.css";

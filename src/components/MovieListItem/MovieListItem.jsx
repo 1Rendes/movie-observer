@@ -1,4 +1,4 @@
-import placeholder from "../img/placeholder-image.webp";
+import placeholder from "../../img/placeholder-image.webp";
 import css from "./MovieListItem.module.css";
 
 export const MovieListItem = ({ result }) => {

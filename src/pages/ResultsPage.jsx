@@ -4,8 +4,8 @@ import css from "./HomePage.module.css";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelect } from "../hooks/useSelect";
-import ResultsList from "../components/ResultsList";
-import { LoadMoreResults } from "../components/LoadMoreResults";
+import ResultsList from "../components/ResultsList/ResultsList";
+import { LoadMoreResults } from "../components/LoadMoreResults/LoadMoreResults";
 import { writeToSS } from "../helpers/sessionStorage";
 
 const ResultsPage = () => {

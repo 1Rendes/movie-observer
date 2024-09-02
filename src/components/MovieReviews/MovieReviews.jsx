@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./MovieRewiews.module.css";
-import { useSelect } from "../hooks/useSelect";
-import { useFetch } from "../hooks/useFetch";
+import { useSelect } from "../../hooks/useSelect";
+import { useFetch } from "../../hooks/useFetch";
 import { useEffect } from "react";
 
 const MovieReviews = () => {

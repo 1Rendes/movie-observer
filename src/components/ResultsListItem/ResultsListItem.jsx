@@ -1,6 +1,6 @@
 import css from "./ResultsListItem.module.css";
-import placeholder from "../img/placeholder-image.webp";
-import { formatDate } from "../helpers/dateFormat";
+import placeholder from "../../img/placeholder-image.webp";
+import { formatDate } from "../../helpers/dateFormat";
 
 export const ResultsListItem = ({ result, type }) => {
   return (

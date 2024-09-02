@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import css from "./ResultsList.module.css";
-import { ResultsListItem } from "./ResultsListItem";
+import { ResultsListItem } from "../ResultsListItem/ResultsListItem";
 
 const ResultsList = ({ movieList, type }) => {
   const location = useLocation();

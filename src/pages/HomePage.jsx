@@ -6,7 +6,12 @@ import { useEffect } from "react";
 
 const HomePage = () => {
   const { homePageData, error } = useDefaultFetch();
-
+  const dataHeaders = [
+    "Top rated movies:",
+    "Upcoming movies:",
+    "Trendings series today:",
+    "Top rated series:",
+  ];
   useEffect(() => {
     if (!error) return;
     toast.error(error);
@@ -15,22 +20,15 @@ const HomePage = () => {
   return (
     <div className={css.homePage}>
       <Toaster />
-      <h3>Top rated movies:</h3>
-      {homePageData[0] && (
-        <HomeMovieList movieList={homePageData[0].results} type={"movie"} />
-      )}
-      <h3>Upcoming movies:</h3>
-      {homePageData[1] && (
-        <HomeMovieList movieList={homePageData[1].results} type={"movie"} />
-      )}
-      <h3>Trendings series today:</h3>
-      {homePageData[2] && (
-        <HomeMovieList movieList={homePageData[2].results} type={"tv"} />
-      )}
-      <h3>Top rated series:</h3>
-      {homePageData[3] && (
-        <HomeMovieList movieList={homePageData[3].results} type={"tv"} />
-      )}
+      {homePageData.map((element, index) => {
+        const type = element.results[0].title ? "movie" : "tv";
+        return (
+          <div key={index}>
+            <h3>{dataHeaders[index]}</h3>
+            <HomeMovieList movieList={element.results} type={type} />
+          </div>
+        );
+      })}
     </div>
   );
 };

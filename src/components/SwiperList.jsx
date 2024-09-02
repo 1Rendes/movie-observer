@@ -1,12 +1,12 @@
 import { Link, useParams } from "react-router-dom";
 import { useSelect } from "../hooks/useSelect";
 import { useFetch } from "../hooks/useFetch";
-import "./swiperStyles.css";
+import "./libStyles.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import { MovieListItem } from "./MovieListItem";
+import { MovieListItem } from "./MovieListItem/MovieListItem";
 import { IoIosArrowBack } from "react-icons/io";
 import { IoIosArrowForward } from "react-icons/io";
 import { useEffect } from "react";

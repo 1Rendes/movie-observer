@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import css from "./Navigation.module.css";
 import clsx from "clsx";
-import { Form } from "./Form";
+import { Form } from "../Form/Form";
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 
