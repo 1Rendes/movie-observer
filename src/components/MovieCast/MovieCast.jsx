@@ -1,4 +1,4 @@
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, Navigate, useLocation, useParams } from "react-router-dom";
 import placeholder from "../../img/placeholder-actor.jpg";
 import toast, { Toaster } from "react-hot-toast";
 import css from "./MovieCast.module.css";
@@ -13,10 +13,10 @@ const MovieCast = () => {
   const { data, error } = useFetch(endpoint);
   const location = useLocation();
 
-  useEffect(() => {
-    if (!error) return;
-    toast.error(error);
-  }, [error]);
+  // useEffect(() => {
+  //   if (!error) return;
+  //   toast.error(error.message);
+  // }, [error]);
 
   useEffect(() => {
     if (!data) return;
@@ -26,7 +26,7 @@ const MovieCast = () => {
     });
   }, [data]);
 
-  return (
+  return !error ? (
     <>
       <Toaster />
       {data && (
@@ -66,6 +66,8 @@ const MovieCast = () => {
         </ul>
       )}
     </>
+  ) : (
+    <Navigate to={"/"} />
   );
 };
 

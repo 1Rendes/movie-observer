@@ -20,7 +20,7 @@ const SwiperList = ({ state, path, subFetch, pathId }) => {
 
   useEffect(() => {
     if (!error) return;
-    toast.error(error);
+    toast.error(error.message);
   }, [error]);
 
   return (

@@ -9,7 +9,11 @@ const MovieReviews = () => {
   const { type, id } = useParams();
   const endpoint = useSelect(type, "", id, "reviews");
   const { data, error } = useFetch(endpoint);
-  error && toast.error(error);
+
+  useEffect(() => {
+    if (!error) return;
+    toast.error(error.message);
+  }, [error]);
 
   useEffect(() => {
     if (!data) return;

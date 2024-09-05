@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useSelect } from "../../hooks/useSelect";
 import { useFetch } from "../../hooks/useFetch";
 import VideoPlayer from "../VideoPlayer";
@@ -13,7 +13,7 @@ const MovieVideoList = () => {
 
   useEffect(() => {
     if (!error) return;
-    toast.error(error);
+    toast.error(error.message);
   }, [error]);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const MovieVideoList = () => {
     });
   }, [data]);
 
-  return (
+  return !error ? (
     <>
       {data && (
         <ul className={css.list}>
@@ -42,6 +42,8 @@ const MovieVideoList = () => {
         </ul>
       )}
     </>
+  ) : (
+    <Navigate to={"/"} />
   );
 };
 
