@@ -1,8 +1,6 @@
-import { useLocation, useParams } from "react-router-dom";
+import { Navigate, useLocation, useParams } from "react-router-dom";
 import { useSelect } from "../hooks/useSelect";
 import { useFetch } from "../hooks/useFetch";
-import { useEffect } from "react";
-import toast, { Toaster } from "react-hot-toast";
 import BackLinkButton from "../components/BackLinkButton";
 import placeholder from "../img/placeholder-actor.jpg";
 import css from "./PersonDetailsPage.module.css";
@@ -21,14 +19,8 @@ const PersonDetailsPage = () => {
   writeToSS(location.pathname, location.state);
   const backLink = readFromSS(location.pathname);
 
-  useEffect(() => {
-    if (!error) return;
-    toast.error(error);
-  }, [error]);
-
-  return (
+  return !error ? (
     <Container>
-      <Toaster />
       {data && (
         <div className={css.content}>
           <BackLinkButton to={backLink} />
@@ -53,6 +45,8 @@ const PersonDetailsPage = () => {
         pathId={"credit_id"}
       />
     </Container>
+  ) : (
+    <Navigate to={"/"} />
   );
 };
 

@@ -26,7 +26,7 @@ const ResultsPage = () => {
 
   useEffect(() => {
     if (!error) return;
-    toast.error(error);
+    toast.error(error.message);
   }, [error]);
 
   useEffect(() => {

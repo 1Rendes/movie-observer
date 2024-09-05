@@ -1,7 +1,6 @@
 import { Navigate, Outlet, useLocation, useParams } from "react-router-dom";
-import { Suspense, useEffect } from "react";
+import { Suspense } from "react";
 import { useFetch } from "../hooks/useFetch";
-import toast, { Toaster } from "react-hot-toast";
 import { useSelect } from "../hooks/useSelect";
 import { readFromSS, writeToSS } from "../helpers/sessionStorage";
 import "react-circular-progressbar/dist/styles.css";
@@ -20,14 +19,8 @@ const MovieDetailsPage = () => {
   writeToSS(location.pathname, location.state);
   const prevLocation = readFromSS(location.pathname);
 
-  useEffect(() => {
-    if (!error) return;
-    toast.error(error);
-  }, [error]);
-
   return !error ? (
     <Container>
-      <Toaster />
       <MovieMainBlock data={data} prevLocation={prevLocation} />
       <MovieAdditionalBlock location={location} type={type} />
       <Suspense fallback={<div>Loading subpage...</div>}>
