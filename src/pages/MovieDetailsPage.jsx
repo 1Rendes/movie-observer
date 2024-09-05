@@ -1,8 +1,7 @@
-import { Outlet, useLocation, useParams } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useParams } from "react-router-dom";
 import { Suspense, useEffect } from "react";
 import { useFetch } from "../hooks/useFetch";
 import toast, { Toaster } from "react-hot-toast";
-import homeCss from "./HomePage.module.css";
 import { useSelect } from "../hooks/useSelect";
 import { readFromSS, writeToSS } from "../helpers/sessionStorage";
 import "react-circular-progressbar/dist/styles.css";
@@ -10,6 +9,7 @@ import "../components/libStyles.css";
 import MovieMainBlock from "../components/MovieMainBlock/MovieMainBlock";
 import MovieAdditionalBlock from "../components/MovieAdditionalBlock/MovieAdditionalBlock";
 import MoviePageSwiper from "../components/MoviePageSwiper";
+import Container from "../components/Container/Container";
 
 const MovieDetailsPage = () => {
   const { type, id } = useParams();
@@ -25,8 +25,8 @@ const MovieDetailsPage = () => {
     toast.error(error);
   }, [error]);
 
-  return (
-    <main className={homeCss.homePage}>
+  return !error ? (
+    <Container>
       <Toaster />
       <MovieMainBlock data={data} prevLocation={prevLocation} />
       <MovieAdditionalBlock location={location} type={type} />
@@ -34,7 +34,9 @@ const MovieDetailsPage = () => {
         <Outlet />
       </Suspense>
       <MoviePageSwiper location={location} />
-    </main>
+    </Container>
+  ) : (
+    <Navigate to={"/"} />
   );
 };
 

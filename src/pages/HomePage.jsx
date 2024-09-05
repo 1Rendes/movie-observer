@@ -1,8 +1,8 @@
 import toast, { Toaster } from "react-hot-toast";
-import css from "./HomePage.module.css";
 import { useDefaultFetch } from "../hooks/useDefaultFetch";
 import HomeMovieList from "../components/HomeMovieList";
 import { useEffect } from "react";
+import Container from "../components/Container/Container";
 
 const HomePage = () => {
   const { homePageData, error } = useDefaultFetch();
@@ -18,7 +18,7 @@ const HomePage = () => {
   }, [error]);
 
   return (
-    <div className={css.homePage}>
+    <Container>
       <Toaster />
       {homePageData.map((element, index) => {
         const type = element.results[0].title ? "movie" : "tv";
@@ -29,7 +29,7 @@ const HomePage = () => {
           </div>
         );
       })}
-    </div>
+    </Container>
   );
 };
 

@@ -1,0 +1,12 @@
+.textContent {
+  display: flex;
+  flex-direction: column;
+}
+.name {
+  color: orange;
+  margin-top: 0;
+}
+.descr {
+  margin: 0;
+  padding: 4px;
+}

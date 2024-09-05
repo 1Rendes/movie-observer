@@ -1,0 +1,13 @@
+.voteSpan {
+  color: rgb(174, 174, 174);
+  font-style: italic;
+  font-size: 12px;
+}
+.rating {
+  align-items: center;
+  display: flex;
+}
+.libRating {
+  width: 70px;
+  padding: 5px;
+}

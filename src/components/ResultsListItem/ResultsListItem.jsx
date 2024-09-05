@@ -20,13 +20,20 @@ export const ResultsListItem = ({ result, type }) => {
         {result.name && <p className={css.parName}>{result.name}</p>}
         <div className={css.typeDate}>
           {result.media_type && (
-            <p className={css.par}>
-              {type === "tv" ? `Series` : type === "movie" ? `Movie` : "Person"}
-            </p>
+            <>
+              <p className={css.par}>
+                {type === "tv"
+                  ? `Series`
+                  : type === "movie"
+                  ? `Movie`
+                  : "Person"}
+              </p>
+              <p className={css.par}>
+                <b>&middot;</b>
+              </p>
+            </>
           )}
-          <p className={css.par}>
-            <b>&middot;</b>
-          </p>
+
           {result.release_date && (
             <p className={css.par}>
               <span className={css.spanPar}>

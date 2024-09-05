@@ -37,21 +37,8 @@
     max-width: 1280px;
   }
 }
-
 .combined {
   max-width: 500px;
-}
-.textContent {
-  display: flex;
-  flex-direction: column;
-}
-.descr {
-  margin: 0;
-  padding: 4px;
-}
-.name {
-  color: orange;
-  margin-top: 0;
 }
 .known {
   color: orange;

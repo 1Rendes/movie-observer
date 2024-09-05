@@ -1,12 +1,12 @@
 import { useFetch } from "../hooks/useFetch";
 import toast, { Toaster } from "react-hot-toast";
-import css from "./HomePage.module.css";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelect } from "../hooks/useSelect";
 import ResultsList from "../components/ResultsList/ResultsList";
 import { LoadMoreResults } from "../components/LoadMoreResults/LoadMoreResults";
 import { writeToSS } from "../helpers/sessionStorage";
+import Container from "../components/Container/Container";
 
 const ResultsPage = () => {
   const [searchParams] = useSearchParams();
@@ -58,7 +58,7 @@ const ResultsPage = () => {
   }, [searchParams]);
 
   return (
-    <div className={css.homePage}>
+    <Container>
       <Toaster />
       <h3>Results: {query}</h3>
       {data && <ResultsList movieList={renderData} type={type} />}
@@ -66,7 +66,7 @@ const ResultsPage = () => {
         <p>We didn&apos;t find any data for Your request</p>
       )}
       {page < totalPages && <LoadMoreResults handleLoadMore={handleLoadMore} />}
-    </div>
+    </Container>
   );
 };
 
